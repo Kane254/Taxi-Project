@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Dashboard</title>
+</head>
+<body>
+    <h2>Driver Dashboard</h2>
+    {% if bookings %}
+        <ul>
+            {% for booking in bookings %}
+                <li>
+                    From: {{ booking.pickup_location }} to {{ booking.dropoff_location }}<br>
+                    Rider: {{ booking.user.username }}<br>
+                    Pickup Time: {{ booking.pickup_time }}<br>
+                    Status: {{ booking.status }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No new bookings.</p>
+    {% endif %}
+</body>
+</html>

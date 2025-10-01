@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h2>My Bookings</h2>
+    {% if bookings %}
+        <ul>
+            {% for booking in bookings %}
+                <li>
+                    Booking to: {{ booking.dropoff_location }}<br>
+                    Pickup Time: {{ booking.pickup_time }}<br>
+                    Status: {{ booking.status }}<br>
+                    {% if booking.driver %}
+                        Driver: {{ booking.driver.user.username }}
+                    {% else %}
+                        Driver: Not Assigned
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no bookings yet.</p>
+    {% endif %}
+</body>
+</html>

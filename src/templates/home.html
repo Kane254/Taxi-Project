@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taxi Booking App</title>
+</head>
+<body>
+    <h1>Welcome to the Taxi Booking App</h1>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+        {% if user.user_type == 'RIDER' %}
+            <p><a href="{% url 'book-taxi' %}">Book a Taxi</a></p>
+            <p><a href="{% url 'rider-booking-list' %}">My Bookings</a></p>
+        {% elif user.user_type == 'DRIVER' %}
+            <p><a href="{% url 'driver-dashboard' %}">Driver Dashboard</a></p>
+        {% endif %}
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a></p>
+        <p><a href="{% url 'register' %}">Register</a></p>
+    {% endif %}
+</body>
+</html>
