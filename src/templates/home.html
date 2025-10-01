@@ -1,22 +1,260 @@
+
+<style>
+    :root {
+        --primary-color: #003366; /* Deep Navy Blue */
+        --accent-color: #FF9900;  /* Safari Orange/Gold */
+        --text-color: #333333;
+        --background-light: #f4f4f4;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif; /* Use a clean, professional font */
+    }
+
+    body {
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: white;
+    }
+
+    /* --- Navigation Bar Styling --- */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 5%;
+        background-color: var(--primary-color);
+        color: white;
+        /* To mimic a professional, fixed top bar: */
+        position: sticky; 
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: white;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .cta-nav {
+        background-color: var(--accent-color);
+        border-radius: 5px;
+        margin-left: 15px;
+        padding: 8px 20px !important;
+    }
+
+    /* --- Hero Section Styling --- */
+    .hero-section {
+        background: url('https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg') no-repeat center center/cover; /* REPLACE with your actual image path */
+        height: 70vh; /* 70% of the viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        /* Optional: Dark overlay for text readability */
+        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); 
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color); /* Contrast for the button text */
+        text-decoration: none;
+        padding: 12px 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+        background-color: #e68a00; /* Slightly darker orange on hover */
+    }
+
+    /* --- Content Section Styling (General) --- */
+    .content-section {
+        padding: 60px 5%;
+        text-align: center;
+        background-color: white;
+    }
+
+    .content-section h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+        color: var(--primary-color);
+    }
+
+    /* --- Package Card Grid --- */
+    .package-grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .package-card {
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .package-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .package-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .package-card h3 {
+        color: var(--primary-color);
+        padding: 15px 15px 5px;
+    }
+
+    .package-card p, .package-card a {
+        padding: 0 15px 15px;
+    }
+
+    /* --- Contact Form Styling --- */
+    .contact-section {
+        background-color: var(--background-light);
+    }
+
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+    }
+
+    /* --- Footer Styling --- */
+    footer {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 0.9em;
+    }
+
+    .footer-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        margin: 0 10px;
+    }
+        
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Taxi Booking App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Voyage Tours - Destination</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Taxi Booking App</h1>
-    {% if user.is_authenticated %}
-        <p>Hello, {{ user.username }}!</p>
-        <p><a href="{% url 'logout' %}">Logout</a></p>
-        {% if user.user_type == 'RIDER' %}
-            <p><a href="{% url 'book-taxi' %}">Book a Taxi</a></p>
-            <p><a href="{% url 'rider-booking-list' %}">My Bookings</a></p>
-        {% elif user.user_type == 'DRIVER' %}
-            <p><a href="{% url 'driver-dashboard' %}">Driver Dashboard</a></p>
-        {% endif %}
-    {% else %}
-        <p><a href="{% url 'login' %}">Login</a></p>
-        <p><a href="{% url 'register' %}">Register</a></p>
-    {% endif %}
+
+    <header class="navbar">
+        <div class="logo">Your Voyage Tours</div>
+        <img width="150" height="150" src="https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-150x150.png" class="attachment-thumbnail size-thumbnail wp-image-1594" alt="" decoding="async" srcset="https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-150x150.png 150w, https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-300x300.png 300w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-1024x1024.png 1024w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-768x768.png 768w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-1536x1536.png 1536w, https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png.png 2000w" sizes="(max-width: 150px) 100vw, 150px">
+        <nav>
+            <ul>
+                <li><a href="#safaris">Safari Packages</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact" class="cta-nav">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        
+        
+        <div class="hero-content" background-image: url('https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg');>
+            <h1>Your Unforgettable Adventure in Kenya Starts Here</h1>
+            <p>Tailor-made Safaris, Beach Escapes, and Local Experiences.</p>
+            <a href="#contact" class="cta-button">BOOK YOUR SAFARI</a>
+        </div>
+    </section>
+
+    <section id="safaris" class="content-section">
+        <h2>Popular Safari Packages</h2>
+        <div class="package-grid">
+            <div class="package-card">
+                <img src="https://imgix.brilliant-africa.com/Elelphant-samburu-northern-frontier.jpg?auto=format,enhance,compress&fit=crop&crop=entropy,faces,focalpoint&w=720&h=0&q=60" alt="Tsavo East National Park">
+                <h3>Tsavo East & Taita Hills</h3>
+                <p>Experience the 'Man-Eaters of Tsavo' and the stunning Taita Hills.</p>
+                <a href="#">View Details</a>
+            </div>
+            </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Get in Touch</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message/Inquiry..." rows="5" required></textarea>
+            <button type="submit" class="cta-button">Send Inquiry</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Voyage Tours. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+        </div>
+    </footer>
+
 </body>
 </html>
