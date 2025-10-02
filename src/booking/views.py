@@ -81,3 +81,11 @@ def kinondo_sacred_forest_view(request):
 
 def wasini_dolphin_view(request):
     return render(request, 'wasini-dolphin.html')
+  
+def mara_details_view(request):
+    """Renders the detailed trip booking page for Masai Mara."""
+    return render(request, 'masai-mara-details.html') 
+
+def diani_retreat_view(request):
+    """Renders the detailed trip booking page for Diani Beach Retreat."""
+    return render(request, 'diani-retreat-details.html') 
