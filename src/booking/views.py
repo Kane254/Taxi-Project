@@ -72,3 +72,12 @@ class ptsavo_details(DetailView):
 
 def tsavo_details_view(request):
     return render(request, 'tsavo-details.html')
+
+def shimoni_caves_view(request):
+    return render(request, 'shimoni-caves.html')
+
+def kinondo_sacred_forest_view(request):
+    return render(request, 'kinondo-sacred.html')
+
+def wasini_dolphin_view(request):
+    return render(request, 'wasini-dolphin.html')
