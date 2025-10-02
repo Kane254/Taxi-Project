@@ -268,7 +268,7 @@ const reviews = [
     {
         name: "Saeed Hernandez",
         date: "2025-01-05",
-        photo: "images/reviewer-photo.jpg",
+        photo: "{{ MEDIA_URL }}images/reviewer-photo.jpg",
         title: "Professional and Reliable Transfer Service",
         text: "Rating: 5/5 | We recently used Diani Magical Transfers for our airport transfer from Villa Shawani Diani, and we were thoroughly impressed with the professional service provided. From the initial communication to the actual transfer, everything was seamless and efficient. The driver, Henry Baraka, was punctual, courteous, and ensured our safe arrival at the airport. The vehicle was clean, comfortable, and well maintained, with world...",
         stars: 5
@@ -276,7 +276,7 @@ const reviews = [
     {
         name: "Fatima Yusuf",
         date: "2025-02-14",
-        photo: "images/reviewer-photo2.jpg",
+        photo: "{{ MEDIA_URL }}images/reviewer-photo2.jpg",
         title: "Excellent Safari Experience",
         text: "Rating: 5/5 | Our family safari was unforgettable! The guide was knowledgeable and friendly, and we saw so much wildlife. Highly recommend Diani Magical Tours for anyone visiting Kenya.",
         stars: 5
@@ -284,7 +284,7 @@ const reviews = [
     {
         name: "John Mwangi",
         date: "2025-03-10",
-        photo: "images/reviewer-photo3.jpg",
+        photo: "{{ MEDIA_URL }}images/reviewer-photo3.jpg",
         title: "Safe and Comfortable Ride",
         text: "Rating: 5/5 | The transfer from Mombasa to Diani was smooth and safe. The car was spotless and the driver was very professional. Will use again!",
         stars: 5
@@ -292,7 +292,7 @@ const reviews = [
     {
         name: "Emily Carter",
         date: "2025-04-02",
-        photo: "images/reviewer-photo4.jpg",
+        photo: "{{ MEDIA_URL }}images/reviewer-photo4.jpg",
         title: "Friendly Staff and Great Service",
         text: "Rating: 5/5 | Booking was easy and the staff were very helpful. The trip to Wasini Island was well organized and fun. Thank you!",
         stars: 5
@@ -338,7 +338,7 @@ document.getElementById('next-review').onclick = function() {
 setInterval(function() {
     currentReview = (currentReview + 1) % reviews.length;
     renderReview(currentReview);
-}, 1500);
+}, 10000);
 
 // Initial render
 renderReview(currentReview);
