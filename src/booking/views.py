@@ -20,7 +20,7 @@ class IsDriverMixin(UserPassesTestMixin):
 class BookingCreateView(IsRiderMixin, CreateView):
     model = Booking
     form_class = BookingForm
-    template_name = 'booking/create_booking.html'
+    template_name = 'create_booking.html'
     success_url = reverse_lazy('rider-booking-list')
 
     def form_valid(self, form):
@@ -41,7 +41,7 @@ class BookingCreateView(IsRiderMixin, CreateView):
 
 class RiderBookingListView(IsRiderMixin, ListView):
     model = Booking
-    template_name = 'booking/rider_booking_list.html'
+    template_name = 'rider_booking_list.html'
     context_object_name = 'bookings'
 
     def get_queryset(self):
@@ -49,7 +49,7 @@ class RiderBookingListView(IsRiderMixin, ListView):
 
 class DriverBookingListView(IsDriverMixin, ListView):
     model = Booking
-    template_name = 'booking/driver_dashboard.html'
+    template_name = 'driver_dashboard.html'
     context_object_name = 'bookings'
 
     def get_queryset(self):
@@ -58,3 +58,17 @@ class DriverBookingListView(IsDriverMixin, ListView):
             return Booking.objects.filter(driver=driver_profile).order_by('-pickup_time')
         except Driver.DoesNotExist:
             return Booking.objects.none()
+
+class ptsavo_details(DetailView):
+    model = Booking
+    template_name = 'tsavo-details.html'
+    context_object_name = 'booking'
+
+    def get_object(self):
+        # For demonstration, we return a dummy booking object
+        return get_object_or_404(Booking, pk=1)  # Replace with actual logic -
+    
+
+
+def tsavo_details_view(request):
+    return render(request, 'tsavo-details.html')
