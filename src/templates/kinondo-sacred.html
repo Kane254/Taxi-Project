@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+
+{% block title %}Kaya Kinondo Sacred Forest Walk | {% endblock %}
+{% load static %}
+
+{% block content %}
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaya Kinondo Sacred Forest Walk | Your Voyage Tours</title>
+    <link rel="stylesheet" href="style.css">
+    {% load static %}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+
+/* --- TRIP DETAILS PAGE STYLING --- */
+
+.trip-details-page {
+    background-color: white;
+    padding: 0;
+}
+
+/* 1. Trip Header and Gallery */
+.trip-header {
+    background-color: var(--background-light);
+    padding: 40px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trip-title-box {
+    text-align: center;
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+.trip-title-box h1 {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.trip-slogan {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.trip-price-mobile {
+    display: none; /* Hide on desktop, show on mobile */
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.trip-gallery {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.main-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+}
+
+/* 2. Itinerary and Booking Layout */
+.itinerary-and-booking {
+    display: flex;
+    padding: 60px 5%;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.itinerary-content {
+    flex: 2; /* Itinerary takes up 2/3 of the space */
+}
+
+.itinerary-content h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.routine-step {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.routine-step h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.routine-step ul, .trip-inclusions ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.routine-step li {
+    margin-bottom: 5px;
+}
+
+.trip-inclusions {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.trip-inclusions li {
+    font-size: 0.95em;
+    line-height: 2;
+}
+
+.trip-inclusions li:before {
+    content: attr(data-icon);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+/* 3. Booking Module (The Sidebar) */
+.booking-module {
+    flex: 1; /* Booking form takes up 1/3 of the space */
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content; /* Important: keeps the background snug to the content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.booking-module h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.current-price {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.price-label {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.price-amount {
+    font-size: 3em;
+    font-weight: 800;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+.price-unit {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.booking-form-details label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.booking-form-details input[type="date"],
+.booking-form-details input[type="number"],
+.booking-form-details select,
+.booking-form-details textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.booking-cta {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px 0;
+    font-size: 1.1em;
+}
+
+.disclaimer {
+    font-size: 0.8em;
+    color: #888;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* --- MOBILE RESPONSIVENESS for Details Page --- */
+@media (max-width: 900px) {
+    .trip-title-box h1 {
+        font-size: 2.2em;
+    }
+    .itinerary-and-booking {
+        flex-direction: column;
+    }
+    .booking-module {
+        order: -1; /* Move booking form to the top on mobile */
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 600px) {
+    .trip-title-box h1 {
+        font-size: 1.8em;
+    }
+    .trip-price-mobile {
+        display: block; /* Show price in the title area on small screens */
+    }
+    .current-price {
+        display: none; /* Hide the redundant price box in the form */
+    }
+    .main-image {
+        height: 250px;
+    }
+    .thumbnail-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+  <main class="trip-details-page">
+      
+      <section class="trip-header">
+          <div class="trip-title-box">
+              <h1>Kaya Kinondo Sacred Forest Walk</h1>
+              <p class="trip-slogan">A guided nature walk through the protected Kaya Kinondo — a living museum of the Digo people, sacred shrines, and ancient medicinal trees.</p>
+              <div class="trip-price-mobile">From $40 per person</div>
+          </div>
+          
+          <div class="trip-gallery">
+              <img src="https://www.lakenakurukenya.com/wp-content/uploads/2022/12/Kaya-Kinondo-Sacred-Forest-Kenya.jpg" alt="Kaya Kinondo forest entrance" class="main-image">
+              <div class="thumbnail-grid">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Kaya_Kinondo%2C_Sacred_Forest%2C_Kenya.jpg/2560px-Kaya_Kinondo%2C_Sacred_Forest%2C_Kenya.jpg" alt="Forest trail through Kaya Kinondo" class="thumbnail">
+                  <img src="https://i0.wp.com/tenyeartravels.net/wp-content/uploads/2024/10/1.-strangler-tree-looking-up.jpeg?fit=1200%2C900&ssl=1" alt="Ancient medicinal trees" class="thumbnail">
+                  <img src="https://www.inlandtown.com/wp-content/uploads/2024/07/Digo-community.jpg" alt="Local Digo community" class="thumbnail">
+              </div>
+          </div>
+      </section>
+
+      <section class="itinerary-and-booking">
+          <div class="itinerary-content">
+              <h2>Experience & Activities</h2>
+              <p>The Kaya Kinondo Sacred Forest Walk is a guided nature trail through a UNESCO-recognized sacred forest near Diani. Led by local Digo guides, the walk explores the forest's botanical, cultural and spiritual importance. Visitors learn about medicinal plants, sacred shrines, burial sites, and the living traditions that sustain the forest.</p>
+              
+              <div class="routine-step">
+                  <h3>Guided Nature Trails</h3>
+                  <ul>
+                      <li>Walk through the ancient forest with a knowledgeable local guide who points out unique plant species and explains their traditional medicinal uses.</li>
+                      <li>Learn about forest conservation and the role of the Digo community as custodians of Kaya Kinondo.</li>
+                  </ul>
+              </div>
+
+              <div class="routine-step">
+                  <h3>Cultural Immersion</h3>
+                  <ul>
+                      <li>Gain insights into Digo spiritual beliefs and traditions, visiting preserved shrines and learning about rituals performed at the forest altars.</li>
+                      <li>Hear oral histories and the cultural practices that have maintained the forest across generations.</li>
+                  </ul>
+              </div>
+
+              <div class="routine-step">
+                  <h3>Spiritual Sites & Wildlife Encounters</h3>
+                  <ul>
+                      <li>Explore well-preserved sacred sites and burial places, presented respectfully with guidance on appropriate behaviour.</li>
+                      <li>Observe local fauna including monkeys (e.g., colobus and other primates), forest birds, and small mammals in their natural habitat.</li>
+                  </ul>
+              </div>
+
+              <div class="routine-step">
+                  <h3>Visiting the Forest</h3>
+                  <ul>
+                      <li>Guided tours are available daily during opening hours; visitors are expected to show respect and follow the guide's directions.</li>
+                      <li>Learn how a portion of visitor fees supports community projects and conservation efforts in the Kinondo area.</li>
+                  </ul>
+              </div>
+              
+              <div class="trip-inclusions">
+                  <h3>What's Included?</h3>
+                  <ul>
+                      <li>✅ Guided nature walk with a knowledgeable local Digo guide</li>
+                      <li>✅ Entrance fees and site stewardship contributions</li>
+                      <li>✅ Educational commentary on plants, sacred sites, and cultural practices</li>
+                      <li>✅ Support for local community projects (portion of fees donated)</li>
+                      <li>❌ Transport from distant hotels (can be arranged on request)</li>
+                      <li>❌ Personal purchases, meals, and gratuities</li>
+                  </ul>
+                  <p style="font-size:0.9em;color:#666;margin-top:10px;">Please approach the forest with respect — it is a living place of worship for the Digo people. Photography and behaviour restrictions may apply at certain shrines.</p>
+              </div>
+          </div>
+          
+          <aside class="booking-module">
+              <h3>Book Your Adventure Now</h3>
+              <div class="current-price">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">$45</span>
+                  <span class="price-unit">per person</span>
+              </div>
+              
+              <form class="booking-form-details">
+                  <label for="travelDate">Select Travel Date:</label>
+                  <input type="date" id="travelDate" name="travelDate" required>
+                  
+                  <label for="pax">Number of Travelers:</label>
+                  <input type="number" id="pax" name="pax" min="1" value="2" required>
+                  
+                  <label for="accommodation">Accommodation Class:</label>
+                  <select id="accommodation" name="accommodation">
+                      <option value="mid">Mid-Range (Standard)</option>
+                      <option value="luxury">Luxury (Upgrade)</option>
+                  </select>
+                  
+                  <label for="notes">Special Requests/Notes:</label>
+                  <textarea id="notes" name="notes" rows="3"></textarea>
+                  
+                  <button type="submit" class="cta-button booking-cta">REQUEST CUSTOM QUOTE</button>
+                  <p class="disclaimer">A team member will confirm your exact final price based on the travel date and group size.</p>
+              </form>
+          </aside>
+      </section>
+
+  </main>
+{% endblock %}
