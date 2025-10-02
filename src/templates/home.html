@@ -63,20 +63,72 @@
         padding: 8px 20px !important;
     }
 
-    /* --- Hero Section Styling --- */
-    .hero-section {
-        background: url('https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg') no-repeat center center/cover; /* REPLACE with your actual image path */
-        height: 70vh; /* 70% of the viewport height */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        position: relative;
-        /* Optional: Dark overlay for text readability */
-        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); 
-    }
+ /* --------------------------------- */
+/* --- 2. HERO SECTION STYLING --- */
+/* --------------------------------- */
+.hero-section {
+    height: 70vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden; 
+    
+    /* FALLBACK: Use Image 1 as the default background color/image */
+    background: url('https://img.freepik.com/free-photo/horizontal-shot-view-beach-sea-with-towels-laid-out-tree-aruba_181624-31402.jpg?semt=ais_hybrid&w=740&q=80') no-repeat center center/cover;
+}
 
+/* Ensure the content is above the background */
+.hero-content {
+    z-index: 30; 
+}
+
+/* --------------------------------- */
+/* --- SLIDESHOW BACKGROUND STYLING (Fade Method) --- */
+/* --------------------------------- */
+.slideshow-bg {
+    /* Fills the entire parent (.hero-section) */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Apply the animation */
+    animation: imageFade 12s infinite linear; 
+    background-size: cover;
+    background-position: center;
+    
+    /* Dark overlay (Shadow) is crucial for text readability */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.45); 
+}
+
+/* --------------------------------- */
+/* --- SLIDESHOW KEYFRAMES (Fade Method) --- */
+/* --------------------------------- */
+
+@keyframes imageFade {
+    /* Set all three images in one animation cycle */
+    
+    /* Image 1 (Diani) */
+    0% { background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/56/73/ed/diani-sea-resort.jpg?w=900&h=-1&s=1'); opacity: 1; }
+    25% { opacity: 2; } /* Image 1 holds */
+    33% { opacity: 1; } /* Image 1 fades out */
+
+    /* Image 2 (Mara) */
+    34% { background-image: url('https://media.istockphoto.com/id/1226321192/photo/sun-loungers-under-umbrella-and-palms-on-the-sandy-beach-by-the-ocean-and-cloudy-sky-vacation.jpg?s=612x612&w=0&k=20&c=q9VSDD2Xg5KqbEzigX9KevZGlOQliqtHMO-UX2hCPq4='); opacity: 0; } /* Set Image 2 */
+    50% { opacity: 2; } /* Image 2 fades in */
+    58% { opacity: 2; } /* Image 2 holds */
+    66% { opacity: 1; } /* Image 2 fades out */
+    
+    /* Image 3 (Tsavo) */
+    67% { background-image: url('https://t3.ftcdn.net/jpg/01/85/30/14/360_F_185301488_lFJ7iDqtiNy3Gwm9spRLhQUq7HzvTfG4.jpg'); opacity: 0; } /* Set Image 3 */
+    83% { opacity: 2; } /* Image 3 fades in */
+    92% { opacity: 2; } /* Image 3 holds */
+    100% { opacity: 1; } /* Image 3 fades out and cycle repeats */
+}
     .hero-content h1 {
         font-size: 3em;
         margin-bottom: 10px;
@@ -191,63 +243,678 @@
     .footer-links a:hover {
         text-decoration: underline;
     }
-</style>
 
+    /* --- Services Grid Container --- */
+.service-grid-container {
+    padding: 60px 5%;
+    background-color: #f8f8f8; /* Very light background for contrast */
+    text-align: center;
+}
+
+.service-grid-container h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-color); /* Uses your Navy Blue color */
+}
+
+.card-grid {
+    display: grid;
+    /* Create three columns on large screens, adapt for smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Individual Service Card Styling --- */
+.service-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px; /* Large rounded corners as seen in the image */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s;
+    /* Subtle box shadow similar to the example */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
+.service-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Image and Rating Section --- */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for image consistency */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rating {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFD700; /* Gold color for stars */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* --- Content Section --- */
+.card-content {
+    padding: 15px;
+    text-align: left;
+    flex-grow: 1; /* Ensures content takes up available space */
+}
+
+.card-content h3 {
+    font-size: 1.25em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* --- Footer (Price and Button) --- */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #e9e9e9;
+    background-color: #fcfcfc;
+}
+
+.price .label {
+    font-size: 0.8em;
+    color: #888;
+    display: block;
+}
+
+.price .amount {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color); /* Navy Blue for clear pricing */
+}
+
+.book-button {
+    background-color: var(--accent-color); /* Orange/Gold CTA */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-button:hover {
+    background-color: #e68a00; /* Darker orange on hover */
+}
+
+/* --- Contact Section Variables (Add to your :root section if you like, or define here) --- */
+:root {
+    /* ... existing variables ... */
+    --dark-bg: #1A2338; /* Deep Navy Blue/Black for the contact box */
+}
+
+
+/* --- Contact Section Wrapper (The light gray background) --- */
+.contact-section-wrapper {
+    background-color: var(--background-light); /* Light background outside the box */
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- The Main Dark Contact Box --- */
+.contact-box {
+    background-color: var(--dark-bg);
+    height: 60%;
+    color: white;
+    max-width: 1000px;
+    width: 100%;
+    padding: 60px;
+    border-radius: 20px; /* Highly rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    display: flex;
+    gap: 40px;
+}
+
+/* --- Contact Information (Left Side) --- */
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: white; /* Title remains white */
+    font-weight: 700;
+}
+
+.intro-text {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc; /* Slightly lighter text for readability */
+}
+
+.details p {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: white;
+}
+
+.details span {
+    color: var(--accent-color); /* Use Orange/Gold for icons/highlights */
+    margin-right: 10px;
+}
+
+
+/* --- Contact Form (Right Side) --- */
+.contact-form-dark {
+    flex: 1.2; /* Takes slightly more space than the info section */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-content: flex-start; /* Aligns form items to the top */
+}
+
+.form-group {
+    width: calc(50% - 10px); /* Two columns, with 20px gap */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #ccc;
+    font-weight: 600;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px; /* Rounded input fields */
+    background-color: white;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.required {
+    color: red; /* Visual indicator for required fields */
+}
+
+.submit-button {
+    /* Style the button to sit in its own slot */
+    width: 150px; 
+    height: 45px;
+    margin-top: 15px;
+    background-color: white;
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+
+/* --- Responsive Adjustments for Mobile --- */
+@media (max-width: 768px) {
+    .contact-box {
+        flex-direction: column;
+        padding: 40px;
+    }
+
+    .form-group {
+        width: 100%; /* Stacks inputs on top of each other */
+    }
+}
+
+/* --- Testimonials Wrapper (The Scenic Background) --- */
+.testimonials-wrapper {
+    /* REPLACE with your desired scenic background image */
+    background: url('https://www.olankasafaris.com/uploads/package/mombasa-full-day-city-tour-package-2024_20240408114900.jpg') no-repeat center center/cover;
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px; /* Ensure enough vertical space */
+}
+
+/* --- The Main White Content Box --- */
+.reviews-box {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    /* Large shadow to lift the box off the background */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.reviews-box .subheading {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--accent-color); /* Orange/Gold */
+    margin-bottom: 5px;
+}
+
+.reviews-box h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+/* --- Testimonial Card Styling --- */
+.testimonial-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.reviewer-name {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.review-date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.slider-nav .nav-arrow {
+    font-size: 1.5em;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.slider-nav .nav-arrow:hover {
+    color: var(--primary-color);
+}
+
+/* --- Review Body --- */
+.review-body h4 {
+    color: var(--primary-color);
+    margin: 5px 0 10px;
+    font-size: 1.1em;
+}
+
+.rating-stars {
+    margin-bottom: 10px;
+}
+
+.star-gold {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1.2em;
+}
+
+.review-source {
+    /* For a potential TripAdvisor logo/icon */
+    float: right;
+}
+
+.review-text {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* --- Rating Summary and CTA --- */
+.rating-summary {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.rating-summary p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.review-button {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.review-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Voyage Tours - Destination</title>
+    <title>Your Magical Tours - Diani & Kenya Safaris</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="navbar">
-        <div class="logo">Your Voyage Tours</div>
-        <img width="150" height="150" src="https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-150x150.png" class="attachment-thumbnail size-thumbnail wp-image-1594" alt="" decoding="async" srcset="https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-150x150.png 150w, https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png-300x300.png 300w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-1024x1024.png 1024w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-768x768.png 768w, https://dianimagicaltours.com/wp-content/uploads/2025/03/logo.png-1536x1536.png 1536w, https://dianivoyagetours.com/wp-content/uploads/2025/03/logo.png.png 2000w" sizes="(max-width: 150px) 100vw, 150px">
+        <div class="logo">Your Magical Tours</div>
         <nav>
             <ul>
                 <li><a href="#safaris">Safari Packages</a></li>
-                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#coastal-highlights">Coastal Highlights</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact" class="cta-nav">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero-section">
+   <section class="hero-section">
         
+        <div class="slideshow-bg"></div> 
         
-        <div class="hero-content" background-image: url('https://www.dianisearesort.de/media/2018/10/DJI_0080-2-2.jpg');>
+        <div class="hero-content">
             <h1>Your Unforgettable Adventure in Kenya Starts Here</h1>
             <p>Tailor-made Safaris, Beach Escapes, and Local Experiences.</p>
             <a href="#contact" class="cta-button">BOOK YOUR SAFARI</a>
         </div>
     </section>
 
+    <section class="service-grid-container">
+    <h2>Popular Transfers & Services</h2>
+    <div class="card-grid">
+        
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-diani.jpg" alt="Transfer to Diani Beach">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa to Diani beach</h3>
+                <p>Enjoy a smooth and scenic ride from Mombasa to the stunning white sands of Diani Beach. Our private transfers ensure comfort, safety, and punctuality.</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$45</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-watamu.jpg" alt="Transfer to Watamu Beach">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa to Watamu beach</h3>
+                <p>Travel in comfort from Mombasa to the tropical paradise of Watamu Beach. Sit back and relax as we take you to this breathtaking coastal destination.</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$80</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+        
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-malindi.jpg" alt="Transfer to Malindi Beach">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa to Malindi Beach</h3>
+                <p>Experience a hassle-free transfer to Malindi, a charming coastal town known for its rich Swahili culture and pristine beaches. Reliable and comfortable rides guaranteed!</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$95</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-lunga.jpg" alt="Transfer to Lunga Lunga Border">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa to Lunga Lunga Border</h3>
+                <p>We provide seamless cross-border transfers from Mombasa to Lunga Lunga, ensuring a stress-free journey for both business and leisure travelers.</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$90</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-voi.jpg" alt="Transfer to Voi/Tsavo">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa Airport to Voi / Tsavo East/West</h3>
+                <p>Arriving at Mombasa Airport? Let us drive you to Voi in a private, air-conditioned vehicle for a smooth and timely transfer.</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$170</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="card-image">
+                <img src="images/transfer-namanga.jpg" alt="Transfer to Namanga Border">
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="card-content">
+                <h3>Mombasa to Namanga Border</h3>
+                <p>Need a long-distance transfer? Our Mombasa to Namanga Border ride ensures a safe, comfortable journey with professional drivers and well-maintained vehicles.</p>
+            </div>
+            <div class="card-footer">
+                <div class="price">
+                    <span class="label">From</span>
+                    <span class="amount">$190</span>
+                </div>
+                <button class="book-button">Book Here</button>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
     <section id="safaris" class="content-section">
         <h2>Popular Safari Packages</h2>
         <div class="package-grid">
             <div class="package-card">
-                <img src="https://imgix.brilliant-africa.com/Elelphant-samburu-northern-frontier.jpg?auto=format,enhance,compress&fit=crop&crop=entropy,faces,focalpoint&w=720&h=0&q=60" alt="Tsavo East National Park">
+                <img src="https://imgix.brilliant-africa.com/Tsavo-Elephants-Banner.jpg?auto=format,enhance,compress&fit=crop&crop=entropy,faces,focalpoint&w=1880&h=740&q=30" alt="Tsavo East National Park">
                 <h3>Tsavo East & Taita Hills</h3>
                 <p>Experience the 'Man-Eaters of Tsavo' and the stunning Taita Hills.</p>
                 <a href="#">View Details</a>
             </div>
+            <div class="package-card">
+                <img src="https://www.kenyasafari.com/images/masai-mara-saruni-mara-590x390.jpg" alt="Maasai Mara National Reserve">
+                <h3>Maasai Mara Migration</h3>
+                <p>Witness the world-famous annual wildebeest migration.</p>
+                <a href="#">View Details</a>
             </div>
+            <div class="package-card">
+                <img src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=450,height=450,dpr=2/tour_img/1af9194b7b91899625905e825afb6250d36ffab582438608d7452cd6494ebd17.jpg" alt="Diani Beach Sunset">
+                <h3>4-Day Diani Beach Retreat</h3>
+                <p>Relax on the pristine, white sands of Kenya’s South Coast.</p>
+                <a href="#">View Details</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="coastal-highlights" class="content-section">
+        <h2>Coastal Highlights</h2>
+        <div class="package-grid">
+            
+            <div class="package-card">
+                <img src="https://www.dianibeachmombasa.com/wp-content/uploads/2023/02/344734991_c2d4cca1fb1.jpg" alt="Shimoni Caves">
+                <h3>Shimoni Caves History Tour</h3>
+                <p>Explore the ancient coral caves used by slaves before transport.</p>
+                <a href="#">View Details</a>
+            </div>
+            
+            <div class="package-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Kaya_Kinondo%2C_Sacred_Forest%2C_Kenya_-_51988953721.jpg/2560px-Kaya_Kinondo%2C_Sacred_Forest%2C_Kenya_-_51988953721.jpg" alt="Kinondo Sacred Forest">
+                <h3>Kinondo Sacred Forest Walk</h3>
+                <p>Discover a protected sacred forest and its rich cultural heritage.</p>
+                <a href="#">View Details</a>
+            </div>
+            
+            <div class="package-card">
+                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/a0/a5/f4.jpg" alt="Wasini Island Dolphin Tour">
+                <h3>Wasini Dolphin & Snorkel Tour</h3>
+                <p>Sail to Kisite-Mpunguti Marine Park to swim with dolphins.</p>
+                <a href="#">View Details</a>
+            </div>
+
+        </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <h2>Get in Touch</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message/Inquiry..." rows="5" required></textarea>
-            <button type="submit" class="cta-button">Send Inquiry</button>
+    <section id="contact" class="contact-section-wrapper">
+    <div class="contact-box">
+        <div class="contact-info">
+            <h2>Contact Diani Voyage Tours</h2>
+            <p class="intro-text">
+                We're here to help! Whether you have questions about our tours, need 
+                assistance with a booking, or just want to learn more about what we offer, 
+                our team is ready to assist you.
+            </p>
+            
+            <div class="details">
+                <p><span>📞</span> +254 740 793492</p>
+                <p><span>📍</span> 800100, Diani – Kenya</p>
+                <p><span>📧</span> bookings@dianivoyagetours.com</p>
+            </div>
+        </div>
+        
+        <form class="contact-form-dark">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name<span class="required">*</span></label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address<span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
         </form>
-    </section>
+    </div>
+</section>
+
+<section class="testimonials-wrapper">
+    <div class="reviews-box">
+        <p class="subheading">Why Choose Us</p>
+        <h2>Top reviews from our clients</h2>
+
+        <div class="testimonial-card" id="testimonial-card">
+            <!-- Review content will be injected by JS -->
+        </div>
+
+        <div class="slider-nav">
+            <span class="nav-arrow" id="prev-review">&lt;</span>
+            <span class="nav-arrow" id="next-review">&gt;</span>
+        </div>
+
+        <div class="rating-summary">
+            <p>
+                Tripadvisor rating score: <strong>5.0 of 5</strong>,
+                <br>
+                based on <strong>51 reviews</strong>
+            </p>
+            <button class="review-button">Write a Review</button>
+        </div>
+    </div>
+</section>
+
+
 
     <footer>
         <p>&copy; 2024 Your Voyage Tours. All Rights Reserved.</p>
@@ -257,4 +924,84 @@
     </footer>
 
 </body>
+<script>
+const reviews = [
+    {
+        name: "Saeed Hernandez",
+        date: "2025-01-05",
+        photo: "images/reviewer-photo.jpg",
+        title: "Professional and Reliable Transfer Service",
+        text: "Rating: 5/5 | We recently used Diani Magical Transfers for our airport transfer from Villa Shawani Diani, and we were thoroughly impressed with the professional service provided. From the initial communication to the actual transfer, everything was seamless and efficient. The driver, Henry Baraka, was punctual, courteous, and ensured our safe arrival at the airport. The vehicle was clean, comfortable, and well maintained, with world...",
+        stars: 5
+    },
+    {
+        name: "Fatima Yusuf",
+        date: "2025-02-14",
+        photo: "images/reviewer-photo2.jpg",
+        title: "Excellent Safari Experience",
+        text: "Rating: 5/5 | Our family safari was unforgettable! The guide was knowledgeable and friendly, and we saw so much wildlife. Highly recommend Diani Magical Tours for anyone visiting Kenya.",
+        stars: 5
+    },
+    {
+        name: "John Mwangi",
+        date: "2025-03-10",
+        photo: "images/reviewer-photo3.jpg",
+        title: "Safe and Comfortable Ride",
+        text: "Rating: 5/5 | The transfer from Mombasa to Diani was smooth and safe. The car was spotless and the driver was very professional. Will use again!",
+        stars: 5
+    },
+    {
+        name: "Emily Carter",
+        date: "2025-04-02",
+        photo: "images/reviewer-photo4.jpg",
+        title: "Friendly Staff and Great Service",
+        text: "Rating: 5/5 | Booking was easy and the staff were very helpful. The trip to Wasini Island was well organized and fun. Thank you!",
+        stars: 5
+    }
+];
+
+let currentReview = 0;
+
+function renderReview(index) {
+    const review = reviews[index];
+    document.getElementById('testimonial-card').innerHTML = `
+        <div class="review-header">
+            <div class="reviewer-info">
+                <img src="${review.photo}" alt="Reviewer Photo" class="reviewer-photo">
+                <div>
+                    <p class="reviewer-name">${review.name}</p>
+                    <p class="review-date">${review.date}</p>
+                </div>
+            </div>
+        </div>
+        <div class="review-body">
+            <div class="rating-stars">
+                ${'<span class="star-gold">★</span>'.repeat(review.stars)}
+                <span class="review-source"></span>
+            </div>
+            <h4>${review.title}</h4>
+            <p class="review-text">${review.text}</p>
+            <a href="#" class="read-more">Read more</a>
+        </div>
+    `;
+}
+
+document.getElementById('prev-review').onclick = function() {
+    currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+    renderReview(currentReview);
+};
+document.getElementById('next-review').onclick = function() {
+    currentReview = (currentReview + 1) % reviews.length;
+    renderReview(currentReview);
+};
+
+// Auto-slide every 7 seconds
+setInterval(function() {
+    currentReview = (currentReview + 1) % reviews.length;
+    renderReview(currentReview);
+}, 1500);
+
+// Initial render
+renderReview(currentReview);
+</script>
 </html>
