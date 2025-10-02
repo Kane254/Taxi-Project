@@ -1,18 +1,11 @@
+{% extends "base.html" %}
 
-{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Book 4-Day Diani Beach Retreat | Your Voyage Tours{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Tsavo & Taita Hills Safari | Your Voyage Tours</title>
-    <link rel="stylesheet" href="style.css">
-    {% load static %}
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+
 <style>
 
 /* --- TRIP DETAILS PAGE STYLING --- */
@@ -253,25 +246,21 @@
 }
 </style>
 
-
-<body>
-
-    
-    <main class="trip-details-page">
+    <div class="trip-details-page">
         
         <section class="trip-header">
             <div class="trip-title-box">
-                <h1>5-Day Voyage Safari: Tsavo East & Taita Hills</h1>
-                <p class="trip-slogan">Witness the "Man-Eaters of Tsavo" and the stunning wildlife of Kenya's largest park.</p>
-                <div class="trip-price-mobile">From $450 per person</div>
+                <h1>4-Day Relaxing Diani Beach Retreat</h1>
+                <p class="trip-slogan">Unwind on the pristine white sands of Diani, rated Africa's leading beach destination.</p>
+                <div class="trip-price-mobile">From $350 per person</div>
             </div>
             
             <div class="trip-gallery">
-                <img src="https://www.tsavonationalparkkenya.com/wp-content/uploads/2020/05/Tsavo-west-national-park-Kenya.jpg" alt="Main view of Tsavo National Park" class="main-image">
+                <img src="https://worldadventuretours.com/wp-content/uploads/2024/08/diani-sunbeds-1.jpg" alt="Sun loungers on Diani Beach" class="main-image">
                 <div class="thumbnail-grid">
-                    <img src="https://www.dianibeachmombasa.com/wp-content/uploads/2023/04/Tsavo-East-National-Park.jpg" alt="Tsavo Elephant" class="thumbnail">
-                    <img src="https://charlies-travels.com/wp-content/smush-webp/2024/10/MSL-Taita-Hills-hike.jpeg.webp" alt="Taita Hills View" class="thumbnail">
-                    <img src="https://www.exploretanzaniatours.com/wp-content/uploads/2022/06/tsavo-east.jpg-1.jpg" alt="Tsavo Lions" class="thumbnail">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/216519648.jpg?k=428c55acb0298cb497e828f8504131d5882612ae28f290872301a688ec0e7d1b&o=&hp=1" alt="Diani resort pool" class="thumbnail">
+                    <img src="https://www.nomad-beach-resort.com/wp-content/uploads/2019/06/kitesurf_2_1600_900-1030x579.jpg" alt="Watersports on Diani" class="thumbnail">
+                    <img src="https://www.kenyawildlifetours.com/wp-content/uploads/2023/06/Black-and-white-Colobus-Monkey1.webp" alt="Colobus Monkey Diani" class="thumbnail">
                 </div>
             </div>
         </section>
@@ -279,51 +268,49 @@
         <section class="itinerary-and-booking">
             <div class="itinerary-content">
                 <h2>Detailed Routine</h2>
-                <p>This 5-day safari offers an ideal blend of rugged adventure and comfortable lodge stays.</p>
+                <p>Perfect for relaxation with optional activities like kitesurfing, snorkeling, or a visit to the Colobus Conservation.</p>
                 
                 <div class="routine-step">
-                    <h3>Day 1: Diani to Tsavo East National Park</h3>
+                    <h3>Day 1: Arrival & Sunset</h3>
                     <ul>
-                        <li>Morning: Pick up from Diani Beach hotel.</li>
-                        <li>Afternoon: Arrival at Tsavo East and first game drive.</li>
-                        <li>Evening: Dinner and overnight stay at Satao Camp.</li>
+                        <li>Morning: Airport transfer from Mombasa (Moi or Ukunda) to Diani hotel.</li>
+                        <li>Afternoon: Check-in and leisure time by the pool or beach.</li>
+                        <li>Evening: Sunset cocktail and dinner at the beachside restaurant.</li>
                     </ul>
                 </div>
 
                 <div class="routine-step">
-                    <h3>Day 2-3: Tsavo West and Amboseli</h3>
-                    <p>Full days of game drives, searching for the Big Five, and visiting the Mzima Springs.</p>
+                    <h3>Day 2: Coastal Exploration (Optional)</h3>
+                    <p>Full day at leisure. Option to take a snorkeling trip to the Kisite Marine Park or enjoy water sports.</p>
                 </div>
                 
                 <div class="routine-step">
-                    <h3>Day 4: Taita Hills Wildlife Sanctuary</h3>
-                    <p>Exclusive game drives in Taita Hills, famous for its lion population and scenic views.</p>
+                    <h3>Day 3: Relaxation & Culture</h3>
+                    <p>Free day for sunbathing. Optional visit to the Kaya Kinondo Sacred Forest or local craft markets.</p>
                 </div>
                 
                 <div class="routine-step">
-                    <h3>Day 5: Departure</h3>
-                    <p>Final game drive and transfer back to your hotel in Diani/Mombasa.</p>
+                    <h3>Day 4: Departure</h3>
+                    <p>Enjoy a final beach walk and breakfast, followed by private transfer back to the airport.</p>
                 </div>
                 
                 <div class="trip-inclusions">
                     <h3>What's Included?</h3>
                     <ul>
-                        <li>✅ All park fees and government taxes</li>
-                        <li>✅ 4 nights' accommodation in mid-range lodges</li>
-                        <li>✅ Full board meals (Breakfast, Lunch, Dinner)</li>
-                        <li>✅ Professional English-speaking driver/guide</li>
-                        <li>❌ International flights</li>
-                        <li>❌ Tips and gratuities</li>
+                        <li>✅ 3 nights' accommodation in a 4-star beach resort</li>
+                        <li>✅ Daily breakfast and dinner (Half-Board)</li>
+                        <li>✅ Return airport transfers (Mombasa or Ukunda)</li>
+                        <li>✅ All government taxes</li>
                     </ul>
                 </div>
             </div>
             
             <aside class="booking-module">
-                <h3>Book Your Adventure Now</h3>
+                <h3>Book Your Retreat Now</h3>
                 <div class="current-price">
                     <span class="price-label">Starting From</span>
-                    <span class="price-amount">$45</span>
-                    <span class="price-unit">per person</span>
+                    <span class="price-amount">$50</span>
+                    <span class="price-unit">per person (total)</span>
                 </div>
                 
                 <form class="booking-form-details">
@@ -333,23 +320,21 @@
                     <label for="pax">Number of Travelers:</label>
                     <input type="number" id="pax" name="pax" min="1" value="2" required>
                     
-                    <label for="accommodation">Accommodation Class:</label>
+                    <label for="accommodation">Hotel Class:</label>
                     <select id="accommodation" name="accommodation">
-                        <option value="mid">Mid-Range (Standard)</option>
-                        <option value="luxury">Luxury (Upgrade)</option>
+                        <option value="4star">4-Star Resort (Standard)</option>
+                        <option value="5star">5-Star Luxury (Upgrade)</option>
                     </select>
                     
                     <label for="notes">Special Requests/Notes:</label>
                     <textarea id="notes" name="notes" rows="3"></textarea>
                     
                     <button type="submit" class="cta-button booking-cta">REQUEST CUSTOM QUOTE</button>
-                    <p class="disclaimer">A team member will confirm your exact final price based on the travel date and group size.</p>
+                    <p class="disclaimer">Price depends on hotel choice and room availability.</p>
                 </form>
             </aside>
         </section>
 
-    </main>
+    </div>
 
-    </body>
-</html>
 {% endblock %}

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Magical Tours - Diani & Kenya Safaris</title>
+    <title>Your Voyage Tours - Diani & Kenya Safaris</title>
     <link rel="stylesheet" href="style.css">
     {% load static %}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
         
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-diani.jpg" alt="Transfer to Diani Beach">
+                <img src="https://www.dianibeachmombasa.com/wp-content/uploads/2022/11/maxresdefault-25.jpg" alt="Transfer to Diani Beach">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -50,7 +50,7 @@
 
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-watamu.jpg" alt="Transfer to Watamu Beach">
+                <img src="https://i.ytimg.com/vi/Uo7vlO_2CUg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCH7XuSRPafVQEV3zcmfrlCfRioLg" alt="Transfer to Watamu Beach">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -68,7 +68,7 @@
         
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-malindi.jpg" alt="Transfer to Malindi Beach">
+                <img src="https://bozeadventures.com/destinations/69286_Watamu%203.jpeg" alt="Transfer to Malindi Beach">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -86,7 +86,7 @@
 
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-lunga.jpg" alt="Transfer to Lunga Lunga Border">
+                <img src="https://static.africa-press.net/tanzania/sites/17/2020/06/cb4234c48c8e775642031cf2319b509c.jpeg" alt="Transfer to Lunga Lunga Border">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -104,7 +104,7 @@
 
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-voi.jpg" alt="Transfer to Voi/Tsavo">
+                <img src="https://evacayafrica.com/wp-content/uploads/2019/01/tsavo1.jpg" alt="Transfer to Voi/Tsavo">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -122,7 +122,7 @@
 
         <div class="service-card">
             <div class="card-image">
-                <img src="images/transfer-namanga.jpg" alt="Transfer to Namanga Border">
+                <img src="https://www.tranquilkilimanjaro.com/wp-content/uploads/Namanga_.jpeg" alt="Transfer to Namanga Border">
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
@@ -154,13 +154,13 @@
                 <img src="https://www.kenyasafari.com/images/masai-mara-saruni-mara-590x390.jpg" alt="Maasai Mara National Reserve">
                 <h3>Maasai Mara Migration</h3>
                 <p>Witness the world-famous annual wildebeest migration.</p>
-                <a href="#">View Details</a>
+                <a href="{% url 'mara_details' %}">View Details</a>
             </div>
             <div class="package-card">
                 <img src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=450,height=450,dpr=2/tour_img/1af9194b7b91899625905e825afb6250d36ffab582438608d7452cd6494ebd17.jpg" alt="Diani Beach Sunset">
                 <h3>4-Day Diani Beach Retreat</h3>
                 <p>Relax on the pristine, white sands of Kenya’s South Coast.</p>
-                <a href="#">View Details</a>
+                <a href="{% url 'diani_retreat' %}">View Details</a>
             </div>
         </div>
     </section>

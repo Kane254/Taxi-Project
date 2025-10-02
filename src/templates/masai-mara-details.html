@@ -1,18 +1,11 @@
+{% extends "base.html" %}
 
-{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Book Masai Mara Migration Safari | Your Magical Tours{% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Tsavo & Taita Hills Safari | Your Voyage Tours</title>
-    <link rel="stylesheet" href="style.css">
-    {% load static %}
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+
 <style>
 
 /* --- TRIP DETAILS PAGE STYLING --- */
@@ -253,25 +246,21 @@
 }
 </style>
 
-
-<body>
-
-    
-    <main class="trip-details-page">
+    <div class="trip-details-page">
         
         <section class="trip-header">
             <div class="trip-title-box">
-                <h1>5-Day Voyage Safari: Tsavo East & Taita Hills</h1>
-                <p class="trip-slogan">Witness the "Man-Eaters of Tsavo" and the stunning wildlife of Kenya's largest park.</p>
-                <div class="trip-price-mobile">From $450 per person</div>
+                <h1>7-Day Great Migration Safari: Masai Mara & Serengeti</h1>
+                <p class="trip-slogan">Witness the world's most spectacular wildlife event—the Great Migration!</p>
+                <div class="trip-price-mobile">From $1,800 per person</div>
             </div>
             
             <div class="trip-gallery">
-                <img src="https://www.tsavonationalparkkenya.com/wp-content/uploads/2020/05/Tsavo-west-national-park-Kenya.jpg" alt="Main view of Tsavo National Park" class="main-image">
+                <img src="https://petnahafricatours.com/wp-content/uploads/2023/01/wildebeest-migration-mara-river-crossing.jpg" alt="Wildebeest crossing the Mara River" class="main-image">
                 <div class="thumbnail-grid">
-                    <img src="https://www.dianibeachmombasa.com/wp-content/uploads/2023/04/Tsavo-East-National-Park.jpg" alt="Tsavo Elephant" class="thumbnail">
-                    <img src="https://charlies-travels.com/wp-content/smush-webp/2024/10/MSL-Taita-Hills-hike.jpeg.webp" alt="Taita Hills View" class="thumbnail">
-                    <img src="https://www.exploretanzaniatours.com/wp-content/uploads/2022/06/tsavo-east.jpg-1.jpg" alt="Tsavo Lions" class="thumbnail">
+                    <img src="https://www.theradiovagabond.com/wp-content/uploads/2022/05/kenya3-thumb.jpg" alt="Hot air balloons over Mara" class="thumbnail">
+                    <img src="https://latestsightings.com/wp-content/uploads/2023/05/T2-1024x576.jpg" alt="Cheetah hunting in Mara" class="thumbnail">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8AiwVYZf4xWEHObDDSLW0AbfQlo1d_OCXbg&sg" alt="Masai warrior guide" class="thumbnail">
                 </div>
             </div>
         </section>
@@ -279,41 +268,40 @@
         <section class="itinerary-and-booking">
             <div class="itinerary-content">
                 <h2>Detailed Routine</h2>
-                <p>This 5-day safari offers an ideal blend of rugged adventure and comfortable lodge stays.</p>
+                <p>This exclusive safari is timed for the Great Migration (June - October) for maximum impact.</p>
                 
                 <div class="routine-step">
-                    <h3>Day 1: Diani to Tsavo East National Park</h3>
+                    <h3>Day 1: Arrival in Nairobi & Transfer to Mara</h3>
                     <ul>
-                        <li>Morning: Pick up from Diani Beach hotel.</li>
-                        <li>Afternoon: Arrival at Tsavo East and first game drive.</li>
-                        <li>Evening: Dinner and overnight stay at Satao Camp.</li>
+                        <li>Morning: Fly from Diani/Mombasa to Nairobi, then connecting flight to Mara.</li>
+                        <li>Afternoon: Check-in, quick lunch, and afternoon game drive.</li>
+                        <li>Evening: Dinner and overnight stay at a luxury tented camp near the river.</li>
                     </ul>
                 </div>
 
                 <div class="routine-step">
-                    <h3>Day 2-3: Tsavo West and Amboseli</h3>
-                    <p>Full days of game drives, searching for the Big Five, and visiting the Mzima Springs.</p>
+                    <h3>Day 2-3: The Great Crossing</h3>
+                    <p>Full days dedicated to tracking the herds and witnessing the dramatic river crossings. Optional Hot Air Balloon Safari available.</p>
                 </div>
                 
                 <div class="routine-step">
-                    <h3>Day 4: Taita Hills Wildlife Sanctuary</h3>
-                    <p>Exclusive game drives in Taita Hills, famous for its lion population and scenic views.</p>
+                    <h3>Day 4-6: Serengeti Extension (Tanzania)</h3>
+                    <p>Cross into Tanzania's Serengeti for varied game viewing and continued migration tracking.</p>
                 </div>
                 
                 <div class="routine-step">
-                    <h3>Day 5: Departure</h3>
-                    <p>Final game drive and transfer back to your hotel in Diani/Mombasa.</p>
+                    <h3>Day 7: Departure</h3>
+                    <p>Morning game drive, then flight back to Nairobi for onward connections.</p>
                 </div>
                 
                 <div class="trip-inclusions">
                     <h3>What's Included?</h3>
                     <ul>
-                        <li>✅ All park fees and government taxes</li>
-                        <li>✅ 4 nights' accommodation in mid-range lodges</li>
-                        <li>✅ Full board meals (Breakfast, Lunch, Dinner)</li>
-                        <li>✅ Professional English-speaking driver/guide</li>
-                        <li>❌ International flights</li>
-                        <li>❌ Tips and gratuities</li>
+                        <li>✅ All internal flights and private transfers</li>
+                        <li>✅ 6 nights' luxury tented camp accommodation</li>
+                        <li>✅ Full board meals (B, L, D)</li>
+                        <li>✅ Exclusive 4x4 Land Cruiser use with an expert guide</li>
+                        <li>✅ Daily park entry fees for both Kenya and Tanzania</li>
                     </ul>
                 </div>
             </div>
@@ -322,8 +310,8 @@
                 <h3>Book Your Adventure Now</h3>
                 <div class="current-price">
                     <span class="price-label">Starting From</span>
-                    <span class="price-amount">$45</span>
-                    <span class="price-unit">per person</span>
+                    <span class="price-amount">$100</span>
+                    <span class="price-unit">per person (per night)</span>
                 </div>
                 
                 <form class="booking-form-details">
@@ -333,23 +321,21 @@
                     <label for="pax">Number of Travelers:</label>
                     <input type="number" id="pax" name="pax" min="1" value="2" required>
                     
-                    <label for="accommodation">Accommodation Class:</label>
+                    <label for="accommodation">Duration (Days):</label>
                     <select id="accommodation" name="accommodation">
-                        <option value="mid">Mid-Range (Standard)</option>
-                        <option value="luxury">Luxury (Upgrade)</option>
+                        <option value="7">7 Days (Standard)</option>
+                        <option value="5">5 Days (Mara Only)</option>
                     </select>
                     
                     <label for="notes">Special Requests/Notes:</label>
                     <textarea id="notes" name="notes" rows="3"></textarea>
                     
                     <button type="submit" class="cta-button booking-cta">REQUEST CUSTOM QUOTE</button>
-                    <p class="disclaimer">A team member will confirm your exact final price based on the travel date and group size.</p>
+                    <p class="disclaimer">Note: Migration availability is seasonal. Price varies based on lodge and season.</p>
                 </form>
             </aside>
         </section>
 
-    </main>
+    </div>
 
-    </body>
-</html>
 {% endblock %}

@@ -72,3 +72,11 @@ class ptsavo_details(DetailView):
 
 def tsavo_details_view(request):
     return render(request, 'tsavo-details.html')
+
+def mara_details_view(request):
+    """Renders the detailed trip booking page for Masai Mara."""
+    return render(request, 'masai-mara-details.html') 
+
+def diani_retreat_view(request):
+    """Renders the detailed trip booking page for Diani Beach Retreat."""
+    return render(request, 'diani-retreat-details.html') 
