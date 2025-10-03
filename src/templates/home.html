@@ -108,13 +108,13 @@
                 <div class="rating">★★★★★</div>
             </div>
             <div class="card-content">
-                <h3>Mombasa Airport to Voi / Tsavo East/West</h3>
+                <h3>Mombasa Airport to Voi </h3>
                 <p>Arriving at Mombasa Airport? Let us drive you to Voi in a private, air-conditioned vehicle for a smooth and timely transfer.</p>
             </div>
             <div class="card-footer">
                 <div class="price">
                     <span class="label">From</span>
-                    <span class="amount">$170</span>
+                    <span class="amount">$195</span>
                 </div>
                 <button class="book-button">Book Here</button>
             </div>
@@ -151,11 +151,11 @@
                 <a class="view-details" href="{% url 'tsavo_details' %}">View Details</a>
             </div>
             <div class="package-card">
-                <img src="https://www.kenyasafari.com/images/masai-mara-saruni-mara-590x390.jpg" alt="Maasai Mara National Reserve">
-                <h3>Maasai Mara Migration</h3>
-                <p>Witness the world-famous annual wildebeest migration.</p>
+                <img src="https://www.lakenakurukenya.com/wp-content/uploads/2023/08/shimbahillsreserve.jpg" alt="Shimbahills Game Reserve">
+                <h3>Shimba Hills Game Reserve</h3>
+                <p class="summary">A quick, unique coastal safari trip. Look for the rare Sable Antelope and hike to the beautiful Sheldrick Falls.</p>
 
-                <a href="{% url 'mara_details' %}">View Details</a>
+                <a href="{% url 'shimba_details' %}">View Details</a>
             </div>
             <div class="package-card">
                 <img src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=450,height=450,dpr=2/tour_img/1af9194b7b91899625905e825afb6250d36ffab582438608d7452cd6494ebd17.jpg" alt="Diani Beach Sunset">
@@ -195,6 +195,156 @@
 
         </div>
     </section>
+
+    <section id="transfers" class="transfers-section-wrapper">
+    <div class="transfers-container">
+        <h2>Airport & SGR Transfers (One Way)</h2>
+        <p class="subtitle">Secure, reliable, and comfortable transport from Moi International Airport (MBA) or SGR Train Terminals.</p>
+        
+        <div class="transfers-grid">
+    
+            <div class="transfer-header">
+                <span class="destination-col">Destination</span>
+                <span class="price-col">Price (Small Car)</span>
+            </div>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI&transfer_price=45" class="transfer-link-item">
+                <span class="destination-col">DIANI</span>
+                <span class="price-col">$45</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=MSA%20TOWN&transfer_price=30" class="transfer-link-item">
+                <span class="destination-col">MSA TOWN</span>
+                <span class="price-col">$30</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=NYALI&transfer_price=28" class="transfer-link-item">
+                <span class="destination-col">NYALI</span>
+                <span class="price-col">$28</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=BAMBURI&transfer_price=28" class="transfer-link-item">
+                <span class="destination-col">BAMBURI</span>
+                <span class="price-col">$28</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=SHANZU&transfer_price=30" class="transfer-link-item">
+                <span class="destination-col">SHANZU</span>
+                <span class="price-col">$30</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=MTWAPA&transfer_price=30" class="transfer-link-item">
+                <span class="destination-col">MTWAPA</span>
+                <span class="price-col">$30</span>
+            </a>
+
+            <a href="{% url 'contact' %}?transfer_dest=KIKAMBALA&transfer_price=55" class="transfer-link-item">
+                <span class="destination-col">KIKAMBALA</span>
+                <span class="price-col">$55</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=VIPINGO&transfer_price=60" class="transfer-link-item">
+                <span class="destination-col">VIPINGO</span>
+                <span class="price-col">$60</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=BOFA&transfer_price=60" class="transfer-link-item">
+                <span class="destination-col">BOFA</span>
+                <span class="price-col">$60</span>
+            </a>
+
+            <a href="{% url 'contact' %}?transfer_dest=MNARANI&transfer_price=60" class="transfer-link-item">
+                <span class="destination-col">MNARANI</span>
+                <span class="price-col">$60</span>
+            </a>
+
+            <a href="{% url 'contact' %}?transfer_dest=WATAMU&transfer_price=80" class="transfer-link-item">
+                <span class="destination-col">WATAMU</span>
+                <span class="price-col">$80</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=MALINDI&transfer_price=95" class="transfer-link-item">
+                <span class="destination-col">MALINDI</span>
+                <span class="price-col">$95</span>
+            </a>
+
+            <a href="{% url 'contact' %}?transfer_dest=MAMBURUI&transfer_price=110" class="transfer-link-item">
+                <span class="destination-col">MAMBURUI</span>
+                <span class="price-col">$110</span>
+            </a>
+
+            <a href="{% url 'contact' %}?transfer_dest=MARAFA&transfer_price=120" class="transfer-link-item">
+                <span class="destination-col">MARAFA</span>
+                <span class="price-col">$120</span>
+            </a>
+            
+        </div>
+        
+        <p class="transfer-note">*Prices are for a small saloon car (1-3 passengers) one-way. Larger vehicles or night transfers may incur additional costs.</p>
+
+        
+    </div>
+</section>
+
+<section id="diani-transfers" class="transfers-section-wrapper enroute-transfers-wrapper">
+    <div class="transfers-container">
+        <h2>Diani Enroute Transfers (From Diani Airport)</h2>
+        <p class="subtitle">Quick and convenient one-way transfers from Ukunda Airstrip (Diani Airport) to popular hotels and resorts.</p>
+        
+        <div class="transfers-grid">
+            
+            <div class="transfer-header">
+                <span class="destination-col">Hotel/Area</span>
+                <span class="price-col">Price (One Way)</span>
+            </div>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20JACARANDA&transfer_price=15" class="transfer-link-item">
+                <span class="destination-col">JACARANDA</span>
+                <span class="price-col">$15</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20NEPTUNE&transfer_price=15" class="transfer-link-item">
+                <span class="destination-col">NEPTUNE</span>
+                <span class="price-col">$15</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20ZURIVILLAS/ALMOND&transfer_price=20" class="transfer-link-item">
+                <span class="destination-col">ZURIVILLAS/ALMOND</span>
+                <span class="price-col">$20</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20MSAMBWENI&transfer_price=30" class="transfer-link-item">
+                <span class="destination-col">MSAMBWENI</span>
+                <span class="price-col">$30</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20FUNZI&transfer_price=40" class="transfer-link-item">
+                <span class="destination-col">FUNZI</span>
+                <span class="price-col">$40</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20TIWI/KWALE%20AREA&transfer_price=35" class="transfer-link-item">
+                <span class="destination-col">TIWI/KWALE AREA</span>
+                <span class="price-col">$35</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20BORA%20BORA%20(Return%20Trip)&transfer_price=50" class="transfer-link-item transfer-return-trip">
+                <span class="destination-col">BORA BORA <span class="return-tag">(Return)</span></span>
+                <span class="price-col">$50</span>
+            </a>
+            
+            <a href="{% url 'contact' %}?transfer_dest=DIANI%20AIRPORT%20-%20AFRICAN%20POOL%20(Return%20Trip)&transfer_price=50" class="transfer-link-item transfer-return-trip">
+                <span class="destination-col">AFRICAN POOL <span class="return-tag">(Return)</span></span>
+                <span class="price-col">$50</span>
+            </a>
+
+        </div>
+        
+        <p class="transfer-note">*All prices are for a small car (1-3 passengers) and are one-way unless specified as (Return). Prices are illustrative and subject to final confirmation.</p>
+
+        <a href="{% url 'contact' %}" class="cta-transfer-button">Book Your Local Transfer</a>
+    </div>
+</section>
 
     <section id="contact" class="contact-section-wrapper">
     <div class="contact-box">

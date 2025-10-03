@@ -663,6 +663,269 @@
     color: white;
 }
 
+/* --- SGR/Airport Transfers Section Styling --- */
+.transfers-section-wrapper {
+    background-color: #f4f4f9; /* Light, neutral background */
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.transfers-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.transfers-container h2 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.transfers-container .subtitle {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.transfers-grid {
+    display: grid;
+    /* Create three columns, automatically wrapping the content */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 15px;
+    margin-bottom: 30px;
+    background-color: white; /* White box background for the list */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style for the Header Row */
+.transfer-header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1 / -1; /* Make the header span all columns */
+    margin-bottom: 10px;
+}
+
+
+/* Style for each Price Item (in style.css) */
+.transfer-link-item { /* CHANGED SELECTOR */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.05em;
+    text-align: left;
+    transition: background-color 0.2s;
+    text-decoration: none; /* Crucial: Remove the default underline */
+    color: inherit; /* Ensure text color is inherited */
+}
+
+/* Update striping to target the link items */
+.transfer-link-item:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.transfer-link-item:hover {
+    background-color: #e6e6ff; /* Light hover effect */
+}
+
+.destination-col {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.price-col {
+    color: var(--accent-color); /* Orange/Gold color for high visibility */
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+/* Notes and CTA Button */
+.transfer-note {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.cta-transfer-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 25px;
+    transition: background-color 0.3s;
+}
+
+.cta-transfer-button:hover {
+    background-color: #cf7e00; /* Slightly darker orange */
+}
+
+
+/* --- Responsive Adjustment --- */
+@media (max-width: 650px) {
+    .transfers-grid {
+        grid-template-columns: 1fr; /* Stack items vertically on small screens */
+    }
+    .transfer-header {
+        border-radius: 5px;
+    }
+    .transfer-item {
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+/* =========================================
+   CONTACT PAGE STYLES
+   ========================================= */
+
+.contact-page {
+    /* Ensures content is centered and contained, separate from the main page body */
+    padding: 60px 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-page h1 {
+    font-size: 2.5em;
+    color: var(--primary-color); /* Use your primary branding color */
+    margin-bottom: 5px;
+}
+
+.contact-page p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    background-color: #ffffff; /* White background for the form area */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: left;
+}
+
+/* Style for Form Fields (Inputs and Textarea) */
+.contact-form label {
+    display: block; /* Makes the label take up its own line */
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus state for better accessibility and user feedback */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color); /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.3);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Allow resizing only vertically */
+}
+
+/* Submit Button Style */
+.contact-form button.cta-button {
+    /* Inherit CTA button styles but ensure it fills the width */
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--accent-color); /* Use the accent color for the main action */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.contact-form button.cta-button:hover {
+    background-color: #cf7e00; /* A darker shade of the accent color */
+}
+
+/* Optional: Layout for smaller inputs side-by-side */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row > div {
+    flex: 1; /* Makes the inputs share the space equally */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column; /* Stack inputs vertically on small screens */
+        gap: 0;
+    }
+}
+
+/* =========================================
+   DIANI ENROUTE TRANSFERS SPECIFIC STYLES
+   ========================================= */
+
+/* Reuse the general wrapper style but give it a slightly different look if desired */
+.enroute-transfers-wrapper {
+    /* Example: Give it a slight color change to distinguish from the main transfer list */
+    background-color: #eef2ff; /* A light blue/purple tint */
+}
+
+/* Style for items offering a return trip option (optional visual cue) */
+.transfer-link-item.transfer-return-trip {
+    background-color: #fffde7; /* A very light yellow to highlight special deals/packages */
+}
+
+.transfer-link-item.transfer-return-trip:hover {
+    background-color: #fff8c6; /* Slightly brighter yellow on hover */
+}
+
+/* Tag to clearly indicate 'Return' */
+.return-tag {
+    background-color: var(--accent-color); /* Orange/Gold tag */
+    color: white;
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
 
 .review-page {
       padding: 60px 5%;
@@ -769,6 +1032,7 @@
             <ul>
                 <li><a href="{% url 'home' %}#safaris">Safari Packages</a></li>
                 <li><a href="{% url 'home' %}#coastal-highlights">Coastal Highlights</a></li>
+                <li><a href="{% url 'home' %}#transfers">Transfers</a></li>
                 <li><a href="{% url 'home' %}#about">About Us</a></li>
                 <li><a href="{% url 'home' %}#contact" class="cta-nav">Contact Us</a></li>
             </ul>
