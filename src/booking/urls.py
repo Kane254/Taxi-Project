@@ -2,7 +2,7 @@
 
 from django.urls import path
 
-from .views import BookingCreateView, RiderBookingListView, DriverBookingListView, tsavo_details_view, mara_details_view, diani_retreat_view, shimoni_caves_view, kinondo_sacred_forest_view, wasini_dolphin_view
+from .views import BookingCreateView, RiderBookingListView, DriverBookingListView, tsavo_details_view, shimba_details_view, diani_retreat_view, shimoni_caves_view, kinondo_sacred_forest_view, wasini_dolphin_view, contact_view
 
 urlpatterns = [
     #path('book/', BookingCreateView.as_view(), name='book-taxi'),
@@ -12,6 +12,7 @@ urlpatterns = [
     path('shimoni_caves', shimoni_caves_view, name='shimoni_caves'),  # New URL pattern
     path('kinondo_sacred', kinondo_sacred_forest_view, name='kinondo_sacred'),  # New URL pattern
     path('wasini_dolphin', wasini_dolphin_view, name='wasini_dolphin'),  # New URL pattern
-    path('mara_details.html', mara_details_view, name='mara_details'),
+    path('shimba_details.html', shimba_details_view, name='shimba_details'),
     path('diani_retreat.html', diani_retreat_view, name='diani_retreat'),
+    path('contact.html', contact_view, name='contact'),
 ]

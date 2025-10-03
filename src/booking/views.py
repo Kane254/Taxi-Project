@@ -82,10 +82,28 @@ def kinondo_sacred_forest_view(request):
 def wasini_dolphin_view(request):
     return render(request, 'wasini-dolphin.html')
   
-def mara_details_view(request):
+def shimba_details_view(request):
     """Renders the detailed trip booking page for Masai Mara."""
-    return render(request, 'masai-mara-details.html') 
+    return render(request, 'shimba-hills-details.html') 
 
 def diani_retreat_view(request):
     """Renders the detailed trip booking page for Diani Beach Retreat."""
     return render(request, 'diani-retreat-details.html') 
+
+def contact_view(request):
+    # 1. Capture the URL parameters from the transfer links
+    transfer_dest = request.GET.get('transfer_dest')
+    transfer_price = request.GET.get('transfer_price')
+    
+    # 2. Build the context dictionary
+    context = {}
+    
+    # 3. If transfer details exist, create a pre-filled message
+    if transfer_dest and transfer_price:
+        context['transfer_message'] = (
+            f"Hello, I would like to book a one-way transfer to {transfer_dest}. "
+            f"The quoted price is ${transfer_price}. Please confirm availability and next steps."
+        )
+        context['is_transfer_request'] = True
+
+    return render(request, 'contact.html', context)
