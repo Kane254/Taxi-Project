@@ -1,0 +1,746 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Your Voyage Tours{% endblock %}
+
+{% block content %}
+<style>
+    /* About Page Specific Styles */
+    
+    /* Hero Section for About Page */
+    .about-hero {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #004d7a 100%);
+        color: white;
+        padding: 100px 5%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: rgba(255, 153, 0, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .about-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -5%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 153, 0, 0.08);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .about-hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .about-hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        animation: fadeInDown 1s ease-out;
+    }
+
+    .about-hero p {
+        font-size: 1.3em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        animation: fadeInUp 1s ease-out 0.3s backwards;
+    }
+
+    /* Our Story Section */
+    .our-story-section {
+        padding: 80px 5%;
+        background: white;
+    }
+
+    .story-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .story-content h2 {
+        font-size: 2.5em;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+    }
+
+    .story-content p {
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .story-image {
+        width: 100%;
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .story-image:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Mission & Vision Section */
+    .mission-vision-section {
+        padding: 80px 5%;
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .mission-vision-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.8em;
+        color: var(--primary-color);
+        margin-bottom: 60px;
+        font-weight: 700;
+    }
+
+    .mv-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+    }
+
+    .mv-card {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-top: 4px solid var(--accent-color);
+    }
+
+    .mv-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .mv-icon {
+        font-size: 3em;
+        margin-bottom: 20px;
+        color: var(--accent-color);
+    }
+
+    .mv-card h3 {
+        font-size: 1.8em;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .mv-card p {
+        font-size: 1.05em;
+        line-height: 1.7;
+        color: #666;
+    }
+
+    /* Why Choose Us Section */
+    .why-choose-section {
+        padding: 80px 5%;
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .why-choose-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .why-choose-container h2 {
+        text-align: center;
+        font-size: 2.8em;
+        margin-bottom: 60px;
+        font-weight: 700;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+    }
+
+    .feature-item {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        transition: background 0.3s ease;
+    }
+
+    .feature-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .feature-icon {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        color: var(--accent-color);
+    }
+
+    .feature-item h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .feature-item p {
+        font-size: 1em;
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+
+    /* Our Services Highlight */
+    .services-highlight-section {
+        padding: 80px 5%;
+        background: white;
+    }
+
+    .services-highlight-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .services-highlight-container h2 {
+        font-size: 2.8em;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+    .services-highlight-container > p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .services-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .service-highlight-item {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 30px;
+        border-radius: 12px;
+        border-left: 5px solid var(--accent-color);
+        text-align: left;
+        transition: transform 0.3s ease;
+    }
+
+    .service-highlight-item:hover {
+        transform: translateX(10px);
+    }
+
+    .service-highlight-item h4 {
+        font-size: 1.4em;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .service-highlight-item p {
+        font-size: 1em;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Stats Section */
+    .stats-section {
+        padding: 60px 5%;
+        background: linear-gradient(135deg, var(--accent-color) 0%, #ff7700 100%);
+        color: white;
+    }
+
+    .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        text-align: center;
+    }
+
+    .stat-item {
+        padding: 20px;
+    }
+
+    .stat-number {
+        font-size: 3.5em;
+        font-weight: 700;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 1.2em;
+        opacity: 0.95;
+        font-weight: 500;
+    }
+
+    /* Call to Action */
+    .cta-section {
+        padding: 80px 5%;
+        background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%);
+        text-align: center;
+    }
+
+    .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .cta-content h2 {
+        font-size: 2.5em;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .cta-content p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-btn-primary {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 15px 40px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+    }
+
+    .cta-btn-primary:hover {
+        background-color: #e68a00;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 153, 0, 0.5);
+    }
+
+    .cta-btn-secondary {
+        background-color: transparent;
+        color: var(--primary-color);
+        padding: 15px 40px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1em;
+        border: 2px solid var(--primary-color);
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn-secondary:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+        .about-hero h1 {
+            font-size: 2.8em;
+        }
+
+        .about-hero p {
+            font-size: 1.15em;
+        }
+
+        .story-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .story-content h2 {
+            font-size: 2.2em;
+        }
+
+        .section-title {
+            font-size: 2.3em;
+        }
+
+        .mv-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 60px 5%;
+        }
+
+        .about-hero h1 {
+            font-size: 2.2em;
+        }
+
+        .about-hero p {
+            font-size: 1.05em;
+        }
+
+        .our-story-section,
+        .mission-vision-section,
+        .why-choose-section,
+        .services-highlight-section,
+        .cta-section {
+            padding: 60px 5%;
+        }
+
+        .story-content h2 {
+            font-size: 1.9em;
+        }
+
+        .story-content p {
+            font-size: 1em;
+        }
+
+        .story-image {
+            height: 300px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+
+        .mv-card {
+            padding: 30px;
+        }
+
+        .stats-container {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cta-btn-primary,
+        .cta-btn-secondary {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-hero h1 {
+            font-size: 1.8em;
+        }
+
+        .about-hero p {
+            font-size: 0.95em;
+        }
+
+        .story-content h2 {
+            font-size: 1.6em;
+        }
+
+        .section-title {
+            font-size: 1.7em;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5em;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3em;
+        }
+
+        .service-highlight-item h4 {
+            font-size: 1.2em;
+        }
+
+        .stats-container {
+            grid-template-columns: 1fr;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+        }
+    }
+</style>
+
+<body>
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>About Your Voyage Tours</h1>
+            <p>
+                We are your trusted partner for unforgettable adventures across Kenya's stunning landscapes. 
+                From pristine beaches to thrilling safaris, we create tailor-made experiences that showcase 
+                the very best of East Africa.
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story-section">
+        <div class="story-container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>
+                    Founded with a passion for showcasing Kenya's natural beauty and rich cultural heritage, 
+                    Your Voyage Tours has grown from a small local operation to one of the most trusted tour 
+                    and transfer providers along Kenya's South Coast.
+                </p>
+                <p>
+                    Based in the heart of Diani, we combine local expertise with professional service to deliver 
+                    exceptional experiences. Whether you're arriving at Moi International Airport, exploring the 
+                    iconic Tsavo National Parks, or relaxing on the white sands of Diani Beach, we're here to 
+                    make your journey seamless and memorable.
+                </p>
+                <p>
+                    Our team is made up of experienced drivers, knowledgeable guides, and passionate professionals 
+                    who love what they do. We don't just offer tours—we share our home with you.
+                </p>
+            </div>
+            <div class="story-image">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/56/73/ed/diani-sea-resort.jpg?w=900&h=-1&s=1" alt="Diani Beach">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision-section">
+        <div class="mission-vision-container">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To provide safe, reliable, and unforgettable travel experiences that connect visitors 
+                        with Kenya's natural wonders and cultural treasures while supporting local communities 
+                        and sustainable tourism practices.
+                    </p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">🌟</div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To be the leading tour and transfer provider in Kenya's coastal region, recognized for 
+                        exceptional service, authentic experiences, and our commitment to making every journey 
+                        extraordinary.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="why-choose-container">
+            <h2>Why Choose Your Voyage Tours?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Professional Drivers</h3>
+                    <p>Experienced, licensed, and courteous drivers who prioritize your safety and comfort.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💼</div>
+                    <h3>Reliable Service</h3>
+                    <p>Punctual pickups, well-maintained vehicles, and seamless communication throughout your journey.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Local Expertise</h3>
+                    <p>Deep knowledge of Kenya's attractions, hidden gems, and the best routes to get you there.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>Competitive Pricing</h3>
+                    <p>Transparent, fair pricing with no hidden fees. Great value for money on all our services.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⭐</div>
+                    <h3>5-Star Reviews</h3>
+                    <p>Consistently rated 5/5 by satisfied customers on TripAdvisor and other platforms.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Personalized Service</h3>
+                    <p>Flexible itineraries and customized experiences tailored to your preferences and needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Highlight -->
+    <section class="services-highlight-section">
+        <div class="services-highlight-container">
+            <h2>What We Offer</h2>
+            <p>
+                From airport transfers to multi-day safari adventures, we provide a comprehensive range 
+                of travel services designed to make your Kenyan experience unforgettable.
+            </p>
+            <div class="services-list">
+                <div class="service-highlight-item">
+                    <h4>✈️ Airport & SGR Transfers</h4>
+                    <p>
+                        Reliable transfers from Moi International Airport and SGR terminals to destinations 
+                        across the coast—Diani, Watamu, Malindi, and beyond.
+                    </p>
+                </div>
+                <div class="service-highlight-item">
+                    <h4>🦁 Safari Packages</h4>
+                    <p>
+                        Experience Kenya's incredible wildlife with guided tours to Tsavo East, Tsavo West, 
+                        Shimba Hills, and other renowned game reserves.
+                    </p>
+                </div>
+                <div class="service-highlight-item">
+                    <h4>🏖️ Coastal Experiences</h4>
+                    <p>
+                        Explore sacred forests, historic caves, dolphin snorkeling, and pristine beach retreats 
+                        along Kenya's stunning South Coast.
+                    </p>
+                </div>
+                <div class="service-highlight-item">
+                    <h4>🚕 Private Car Hire</h4>
+                    <p>
+                        Comfortable, air-conditioned vehicles available for day trips, custom itineraries, 
+                        and long-distance travel across Kenya.
+                    </p>
+                </div>
+                <div class="service-highlight-item">
+                    <h4>🗺️ Custom Itineraries</h4>
+                    <p>
+                        Tell us your dream trip, and we'll create a personalized itinerary that fits your 
+                        budget, timeline, and interests.
+                    </p>
+                </div>
+                <div class="service-highlight-item">
+                    <h4>👨‍👩‍👧‍👦 Group Tours</h4>
+                    <p>
+                        Special rates and arrangements for families, corporate groups, and large parties 
+                        traveling together.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5.0</span>
+                <span class="stat-label">TripAdvisor Rating</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Destinations Covered</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Customer Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Adventure?</h2>
+            <p>
+                Let us help you create memories that will last a lifetime. Whether you're planning a safari, 
+                need a reliable airport transfer, or want to explore Kenya's coastal treasures, we're here to 
+                make it happen.
+            </p>
+            <div class="cta-buttons">
+                <a href="{% url 'home' %}#contact" class="cta-btn-primary">Get in Touch</a>
+                <a href="{% url 'home' %}#safaris" class="cta-btn-secondary">View Our Tours</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+{% endblock %}

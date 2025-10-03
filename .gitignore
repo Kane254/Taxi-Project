@@ -11,3 +11,4 @@ __pycache__/
 *.db
 *.bak
 *.swp
+db.sqlite3
