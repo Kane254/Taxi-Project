@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Diani Voyage Review{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<main class="review-page">
+	<section class="review-box">
+		<h1>Leave a Review</h1>
+		<p class="lead">Tell us about your experience — your feedback helps us improve and helps other travellers.</p>
+
+		{% if messages %}
+			<ul class="messages">
+			{% for message in messages %}
+				<li class="{{ message.tags }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		<form method="post" action="" class="review-form">
+			{% csrf_token %}
+			<div class="field">
+				{{ form.full_name.label_tag }}
+				{{ form.full_name }}
+				{% if form.full_name.errors %}
+					<div class="error">{{ form.full_name.errors }}</div>
+				{% endif %}
+			</div>
+
+			<div class="field">
+				{{ form.rating.label_tag }}
+				{{ form.rating }}
+				{% if form.rating.errors %}
+					<div class="error">{{ form.rating.errors }}</div>
+				{% endif %}
+			</div>
+
+			<div class="field">
+				{{ form.comment.label_tag }}
+				{{ form.comment }}
+				{% if form.comment.errors %}
+					<div class="error">{{ form.comment.errors }}</div>
+				{% endif %}
+			</div>
+
+			<div class="actions">
+				<button type="submit" class="btn submit-review">Submit Review</button>
+				<a href="/" class="btn btn-light">Cancel</a>
+			</div>
+		</form>
+	</section>
+</main>
+
+{% endblock %}

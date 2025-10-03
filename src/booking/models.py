@@ -13,22 +13,34 @@ class Vehicle(models.Model):
     def __str__(self):
         return f"{self.make} {self.model} ({self.license_plate})"
 
+class Contact(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+
+    def __str__(self):
+        return f"Contact: {self.first_name} {self.last_name}"
+
+
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
-    driver = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned_bookings')
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name='bookings')
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.SET_NULL, null=True, blank=True, related_name='bookings')
     pickup_location = models.CharField(max_length=255)
     dropoff_location = models.CharField(max_length=255)
     pickup_time = models.DateTimeField()
     booking_time = models.DateTimeField(auto_now_add=True)
 
-    STATUS_CHOICES = [
-        ('PENDING', 'Pending'),
-        ('CONFIRMED', 'Confirmed'),
-        ('IN_PROGRESS', 'In Progress'),
-        ('COMPLETED', 'Completed'),
-        ('CANCELLED', 'Cancelled'),
-    ]
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='PENDING')
+    def __str__(self):
+        return f"Booking for {self.contact} from {self.pickup_location} to {self.dropoff_location}"
+    
+
+class Review(models.Model):
+    #booking = models.OneToOneField(Booking, on_delete=models.CASCADE, related_name='review')
+    full_name = models.CharField(max_length=100)
+    rating = models.IntegerField()
+    comment = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Booking from {self.user.username} to {self.dropoff_location}"
+        return f"Review - Rating: {self.rating}"

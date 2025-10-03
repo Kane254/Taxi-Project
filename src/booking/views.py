@@ -5,9 +5,10 @@ from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseForbidden
+from django.contrib import messages
 
-from .models import Booking, Driver
-from .forms import BookingForm
+from .models import Booking, Contact, Driver, Review
+from .forms import BookingForm, ContactForm, ReviewForm
 
 class IsRiderMixin(UserPassesTestMixin):
     def test_func(self):
@@ -16,6 +17,17 @@ class IsRiderMixin(UserPassesTestMixin):
 class IsDriverMixin(UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_authenticated and self.request.user.user_type == 'DRIVER'
+
+
+class ContactCreateView(LoginRequiredMixin, CreateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'create_contact.html'
+    success_url = reverse_lazy('book-taxi')
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
 
 class BookingCreateView(IsRiderMixin, CreateView):
     model = Booking
@@ -69,6 +81,15 @@ class ptsavo_details(DetailView):
         return get_object_or_404(Booking, pk=1)  # Replace with actual logic -
     
 
+class ReviewCreateView(CreateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'review.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
 
 def tsavo_details_view(request):
     return render(request, 'tsavo-details.html')
@@ -89,3 +110,24 @@ def mara_details_view(request):
 def diani_retreat_view(request):
     """Renders the detailed trip booking page for Diani Beach Retreat."""
     return render(request, 'diani-retreat-details.html') 
+
+
+def contact_submit(request):
+    """Handle contact form submissions from the site landing page.
+
+    Uses ContactForm to validate input and saves a Contact record. Feedback
+    is provided via Django messages and the user is redirected back to home.
+    """
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thanks — we've received your message and will be in touch shortly.")
+            return redirect('home')
+        else:
+            # Attach form errors to messages so they can be shown after redirect
+            for field, errs in form.errors.items():
+                for e in errs:
+                    messages.error(request, f"{field}: {e}")
+            return redirect('home')
+    return redirect('home')
