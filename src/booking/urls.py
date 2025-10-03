@@ -2,7 +2,8 @@
 
 from django.urls import path
 
-from .views import BookingCreateView, RiderBookingListView, DriverBookingListView, tsavo_details_view, shimba_details_view, diani_retreat_view, shimoni_caves_view, kinondo_sacred_forest_view, wasini_dolphin_view, contact_view
+from .views import BookingCreateView, RiderBookingListView, DriverBookingListView, tsavo_details_view, shimba_details_view, diani_retreat_view, shimoni_caves_view, kinondo_sacred_forest_view, wasini_dolphin_view, contact_view, contact_submit, ReviewCreateView
+
 
 urlpatterns = [
     #path('book/', BookingCreateView.as_view(), name='book-taxi'),
@@ -14,5 +15,7 @@ urlpatterns = [
     path('wasini_dolphin', wasini_dolphin_view, name='wasini_dolphin'),  # New URL pattern
     path('shimba_details.html', shimba_details_view, name='shimba_details'),
     path('diani_retreat.html', diani_retreat_view, name='diani_retreat'),
+    path('contact/submit/', contact_submit, name='contact_submit'),
+    path('reviews/', ReviewCreateView.as_view(), name='review_new'),
     path('contact.html', contact_view, name='contact'),
 ]
