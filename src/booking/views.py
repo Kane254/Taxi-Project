@@ -148,3 +148,7 @@ def contact_view(request):
         context['is_transfer_request'] = True
 
     return render(request, 'contact.html', context)
+
+def about_view(request):
+    """Renders the About Us page."""
+    return render(request, 'about.html')
