@@ -4,11 +4,104 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, Http404
 from django.contrib import messages
 
 from .models import Booking, Contact, Driver, Review
 from .forms import BookingForm, ContactForm, ReviewForm
+
+# pages/views.py
+
+
+# Define a simple data structure for your popular transfers
+TRANSFER_DATA = {
+    'diani': {
+        'title': 'Mombasa to Diani Beach Transfer',
+        'slogan': 'Enjoy a smooth and scenic ride to the white sands of Diani Beach.',
+        'price': 45,
+        'route': 'Mombasa to Diani Beach',
+        'details': [
+            "Private, comfortable transfer from Mombasa City or Moi International Airport (MBA).",
+            "Reliable, on-time service with professional, safety-conscious drivers.",
+            "Perfect for guests heading to Diani, Galu, or Msambweni areas."
+        ],
+        'images': ['diani-main.jpg', 'diani-thumb1.jpg', 'diani-thumb2.jpg'],
+    },
+    'watamu': {
+        'title': 'Mombasa to Watamu Beach Transfer',
+        'slogan': 'Travel in comfort to the tropical paradise of Watamu Beach.',
+        'price': 80,
+        'route': 'Mombasa to Watamu beach',
+        'details': [
+            "Direct transfer from Mombasa to your Watamu hotel or villa.",
+            "Covers areas like Watamu Bay and Turtle Bay.",
+            "Air-conditioned vehicles ensuring a relaxing journey."
+        ],
+        'images': ['watamu-main.jpg', 'watamu-thumb1.jpg', 'watamu-thumb2.jpg'],
+    },
+    'malindi': {
+        'title': 'Mombasa to Malindi Beach Transfer',
+        'slogan': 'Experience a hassle-free transfer to the charming coastal town of Malindi.',
+        'price': 95,
+        'route': 'Mombasa to Malindi beach',
+        'details': [
+            "Seamless transfer covering the long distance from Mombasa.",
+            "Ideal for travelers heading to Malindi's Swahili culture and historic sites.",
+            "Reliable and comfortable ride guaranteed."
+        ],
+        'images': ['malindi-main.jpg', 'malindi-thumb1.jpg', 'malindi-thumb2.jpg'],
+    },
+    # Add more popular transfer entries here:
+    'lungalunga': {
+        'title': 'Mombasa to Lunga Lunga Border Transfer',
+        'slogan': 'Seamless cross-border transfers for business and leisure travelers to Tanzania.',
+        'price': 90,
+        'route': 'Mombasa to Lunga Lunga Border',
+        'details': [
+            "Private vehicle service directly to the border crossing.",
+            "Stress-free journey with focus on punctuality.",
+            "The safest way to handle international logistics."
+        ],
+        'images': ['border-main.jpg', 'border-thumb1.jpg', 'border-thumb2.jpg'],
+    },
+    'tsavo-east': {
+        'title': 'Mombasa Airport to Tsavo East/Voi Transfer',
+        'slogan': 'Start your safari with a private, air-conditioned vehicle direct to your lodge.',
+        'price': 170,
+        'route': 'Mombasa Airport to Voi / Tsavo East',
+        'details': [
+            "Direct, comfortable transfer from MBA Airport to Voi, Tsavo East, or Taita Hills area.",
+            "Reliable service ready for your flight arrival.",
+            "Large vehicles available for luggage and equipment."
+        ],
+        'images': ['tsavo-transfer-main.jpg', 'tsavo-transfer-thumb1.jpg', 'tsavo-transfer-thumb2.jpg'],
+    },
+    'namanga': {
+        'title': 'Mombasa to Namanga Border Transfer',
+        'slogan': 'Safe and comfortable long-distance transfer to the Namanga Border.',
+        'price': 190,
+        'route': 'Mombasa to Namanga Border',
+        'details': [
+            "Long-distance journey with experienced, professional drivers.",
+            "All-day trip that requires careful planning and reliable vehicles.",
+            "Best choice for starting or ending an extensive East Africa trip."
+        ],
+        'images': ['longhaul-main.jpg', 'longhaul-thumb1.jpg', 'longhaul-thumb2.jpg'],
+    },
+}
+
+def transfer_details_view(request, transfer_slug):
+    """Renders the detailed page for any popular transfer."""
+    try:
+        data = TRANSFER_DATA[transfer_slug]
+    except KeyError:
+        raise Http404("Transfer option not found.")
+        
+    context = {
+        'transfer': data,
+        'transfer_slug': transfer_slug
+    }
+    return render(request, 'transfer-details.html', context)
 
 class IsRiderMixin(UserPassesTestMixin):
     def test_func(self):
