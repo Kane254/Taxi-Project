@@ -501,6 +501,145 @@
         border-radius: 4px;
         font-size: 1em;
     }
+.contact-info h2,
+.contact-info h3 {
+    font-size: clamp(1.8rem, 1.6vw + 1.1rem, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: clamp(16px, 1vw, 24px);
+}
+
+.intro-text {
+    font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.15rem);
+    line-height: 1.7;
+    margin-bottom: clamp(22px, 1.2vw, 32px);
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.details {
+    display: grid;
+    gap: clamp(12px, 0.8vw, 18px);
+}
+
+.details p {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: clamp(0.95rem, 0.35vw + 0.9rem, 1.15rem);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.details span {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    color: var(--accent-color);
+}
+
+.form-group label {
+    font-size: clamp(0.8rem, 0.3vw + 0.7rem, 0.95rem);
+    letter-spacing: 0.02em;
+}
+
+.form-group input {
+    font-size: clamp(0.95rem, 0.3vw + 0.85rem, 1.05rem);
+    min-height: clamp(44px, 3.8vw, 52px);
+}
+
+.submit-button {
+    width: clamp(140px, 30vw, 180px);
+    height: clamp(44px, 4vw, 52px);
+    font-size: clamp(0.95rem, 0.3vw + 0.85rem, 1.05rem);
+}
+@media (max-width: 1024px) {
+    .contact-box {
+        padding: 40px;
+        gap: 30px;
+    }
+
+    .contact-info h2,
+    .contact-info h3 {
+        font-size: clamp(1.6rem, 1.2vw + 1rem, 2.2rem);
+    }
+
+    .contact-form-dark {
+        gap: 16px;
+    }
+}
+@media (max-width: 600px) {
+    .contact-section-wrapper {
+        padding: 60px 6%;
+    }
+
+    .contact-box {
+        padding: 32px 24px;
+        border-radius: 16px;
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center;
+    }
+
+    .contact-info h2,
+    .contact-info h3 {
+        font-size: clamp(1.5rem, 1.5vw + 1rem, 1.9rem);
+    }
+
+    .intro-text {
+        font-size: clamp(0.9rem, 0.4vw + 0.82rem, 1.05rem);
+    }
+
+    .details {
+        justify-items: center;
+    }
+
+    .details p {
+        font-size: clamp(0.9rem, 0.4vw + 0.82rem, 1.05rem);
+    }
+
+    .contact-form-dark {
+        gap: 14px;
+    }
+
+    .form-group label {
+        font-size: clamp(0.78rem, 0.3vw + 0.7rem, 0.9rem);
+    }
+
+    .form-group input {
+        font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1rem);
+        padding: 10px 12px;
+    }
+
+    .submit-button {
+        width: 100%;
+        height: clamp(44px, 9vw, 50px);
+    }
+}
+@media (max-width: 420px) {
+    .contact-section-wrapper {
+        padding: 50px 5%;
+    }
+
+    .contact-box {
+        padding: 24px 18px;
+    }
+
+    .contact-info h2,
+    .contact-info h3 {
+        font-size: clamp(1.35rem, 3vw + 0.9rem, 1.7rem);
+    }
+
+    .details p {
+        font-size: clamp(0.88rem, 0.5vw + 0.8rem, 1rem);
+    }
+
+    .contact-form-dark {
+        gap: 12px;
+    }
+
+    .submit-button {
+        font-size: clamp(0.9rem, 0.4vw + 0.82rem, 1rem);
+    }
+}
 
     /* --- Footer Styling --- */
     footer {
@@ -680,7 +819,8 @@
     flex-direction: column;
 }
 
-.contact-info h2 {
+.contact-info h2,
+.contact-info h3 {
     font-size: 2.5em;
     margin-bottom: 20px;
     color: white; /* Title remains white */
@@ -777,58 +917,65 @@
 .testimonials-wrapper {
     /* REPLACE with your desired scenic background image */
     background: url('https://www.olankasafaris.com/uploads/package/mombasa-full-day-city-tour-package-2024_20240408114900.jpg') no-repeat center center/cover;
-    padding: 80px 5%;
+    padding: clamp(60px, 8vw, 100px) 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 700px; /* Ensure enough vertical space */
+    min-height: clamp(520px, 70vh, 720px);
 }
 
 /* --- The Main White Content Box --- */
 .reviews-box {
     background: white;
-    padding: 60px 40px;
-    border-radius: 12px;
-    max-width: 900px;
+    padding: clamp(32px, 5vw, 60px) clamp(24px, 4vw, 48px);
+    border-radius: 16px;
+    max-width: 920px;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    display: grid;
+    gap: clamp(24px, 3vw, 36px);
     /* Large shadow to lift the box off the background */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
 .reviews-box .subheading {
-    font-size: 1em;
+    font-size: clamp(0.9rem, 0.4vw + 0.8rem, 1.1rem);
     font-weight: 600;
     color: var(--accent-color); /* Orange/Gold */
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .reviews-box h2 {
-    font-size: 2.5em;
+    font-size: clamp(1.9rem, 1.4vw + 1.3rem, 2.6rem);
     color: var(--primary-color);
-    margin-bottom: 40px;
-    text-align: left;
+    margin: 0;
+    line-height: 1.2;
 }
 
 /* --- Testimonial Card Styling --- */
 .testimonial-card {
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: clamp(22px, 4vw, 32px);
     text-align: left;
-    margin-bottom: 30px;
+    background-color: #ffffff;
+    display: grid;
+    gap: clamp(16px, 2.5vw, 24px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
 .review-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .reviewer-info {
     display: flex;
     align-items: center;
+    gap: 14px;
 }
 
 .reviewer-photo {
@@ -836,7 +983,6 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 10px;
 }
 
 .reviewer-name {
@@ -850,24 +996,37 @@
 }
 
 .slider-nav .nav-arrow {
-    font-size: 1.5em;
-    color: #ccc;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.06);
     cursor: pointer;
-    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .slider-nav .nav-arrow:hover {
-    color: var(--primary-color);
+    color: white;
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 /* --- Review Body --- */
 .review-body h4 {
     color: var(--primary-color);
-    margin: 5px 0 10px;
-    font-size: 1.1em;
+    margin: 0 0 6px;
+    font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.35rem);
 }
 
 .rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 10px;
 }
 
@@ -882,10 +1041,10 @@
 }
 
 .review-text {
-    font-size: 0.95em;
-    line-height: 1.5;
+    font-size: clamp(0.95rem, 0.35vw + 0.88rem, 1.05rem);
+    line-height: 1.6;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .read-more {
@@ -898,14 +1057,16 @@
 .rating-summary {
     text-align: center;
     border-top: 1px solid #eee;
-    padding-top: 20px;
+    padding-top: clamp(16px, 3vw, 24px);
+    display: grid;
+    gap: 12px;
 }
 
 .rating-summary p {
-    font-size: 0.9em;
+    font-size: clamp(0.9rem, 0.3vw + 0.85rem, 1.05rem);
     line-height: 1.5;
     color: #555;
-    margin-bottom: 15px;
+    margin: 0;
 }
 
 .review-button {
@@ -913,15 +1074,86 @@
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     padding: 10px 25px;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
 }
 
 .review-button:hover {
     background-color: var(--primary-color);
     color: white;
+    transform: translateY(-1px);
+}
+
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(16px, 5vw, 32px);
+}
+
+@media (max-width: 900px) {
+    .reviews-box {
+        padding: clamp(28px, 6vw, 48px) clamp(20px, 5vw, 36px);
+        gap: clamp(20px, 4vw, 32px);
+    }
+
+    .review-header {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 680px) {
+    .testimonials-wrapper {
+        padding: clamp(48px, 10vw, 72px) 4%;
+    }
+
+    .reviews-box {
+        border-radius: 14px;
+    }
+
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .slider-nav {
+        gap: clamp(12px, 6vw, 24px);
+    }
+
+    .slider-nav .nav-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    .review-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .reviews-box {
+        padding: clamp(24px, 8vw, 34px) clamp(16px, 7vw, 24px);
+    }
+
+    .reviewer-photo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .rating-summary p {
+        font-size: clamp(0.88rem, 0.5vw + 0.8rem, 0.98rem);
+    }
+
+    .slider-nav .nav-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1em;
+    }
 }
 
 /* --- SGR/Airport Transfers Section Styling --- */
