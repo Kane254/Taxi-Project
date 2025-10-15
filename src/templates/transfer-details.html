@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book {{ transfer.title }} | Diani Magical Tours{% endblock %}
+
+{% block content %}
+
+<style>
+    /* =========================================
+   TRANSFER DETAILS PAGE STYLES
+   ========================================= */
+
+    .trip-details-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 5%;
+    }
+
+    /* --- 1. Trip Header / Title Box --- */
+    .trip-header {
+        margin-bottom: 40px;
+        background-color: #f7f7f7;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    .trip-title-box h1 {
+        font-size: 2.5em;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+    }
+
+    .trip-slogan {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .trip-price-mobile {
+        display: none; /* Only show on mobile */
+    }
+
+    /* --- 2. Trip Gallery --- */
+    .trip-gallery {
+        display: grid;
+        grid-template-columns: 3fr 1fr; /* Main image on the left, thumbnails on the right */
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .trip-gallery .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .thumbnail-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .thumbnail-grid .thumbnail {
+        width: 100%;
+        height: 120px; /* Fixed height for consistent look */
+        object-fit: cover;
+        border-radius: 5px;
+        opacity: 0.85;
+        transition: opacity 0.3s;
+    }
+
+    .thumbnail-grid .thumbnail:hover {
+        opacity: 1;
+    }
+
+    /* --- 3. Itinerary & Booking Layout --- */
+    .itinerary-and-booking {
+        display: flex;
+        gap: 40px;
+        margin-top: 30px;
+    }
+
+    .itinerary-content {
+        flex: 2.5; /* Takes up more space for details */
+    }
+
+    .itinerary-content h2 {
+        color: var(--primary-color);
+        font-size: 1.8em;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 5px;
+    }
+
+    .itinerary-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .itinerary-content ul li {
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+        color: #444;
+        line-height: 1.5;
+    }
+
+    .itinerary-content ul li::before {
+        
+        margin-right: 10px;
+        color: var(--accent-color);
+        font-weight: 700;
+    }
+
+    /* --- 4. Booking Module (Aside) --- */
+    .booking-module {
+        flex: 1; /* Takes up less space */
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        height: fit-content; /* Ensure it doesn't stretch */
+        text-align: center;
+    }
+
+    .booking-module h3 {
+        color: var(--primary-color);
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .booking-module .current-price {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .booking-module .price-label {
+        display: block;
+        font-size: 0.9em;
+        opacity: 0.8;
+    }
+
+    .booking-module .price-amount {
+        font-size: 2.2em;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .booking-module .price-unit {
+        font-size: 1em;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .booking-module .note {
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .booking-module .disclaimer {
+        font-size: 0.85em;
+        color: #777;
+        margin-top: 15px;
+    }
+
+    .booking-module .booking-cta {
+        /* Uses the existing cta-button style */
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    /* --- 5. Transfer Table Integration (Reuse existing styles) --- */
+    .full-width-section {
+        padding-top: 30px;
+        border-top: 1px solid #eee;
+        margin-top: 30px;
+    }
+    .full-width-section h2 {
+        text-align: center;
+    }
+
+    /* Responsive adjustments for phones and tablets */
+    @media (max-width: 992px) {
+        .itinerary-and-booking {
+            flex-direction: column; /* Stack details and booking module */
+        }
+
+        .booking-module {
+            order: -1; /* Place booking module above details on mobile */
+            margin-bottom: 30px;
+        }
+
+        .trip-gallery {
+            grid-template-columns: 1fr; /* Stack main image and thumbnails */
+        }
+
+        .thumbnail-grid {
+            grid-template-columns: repeat(3, 1fr); /* Lay thumbnails side-by-side */
+        }
+    }
+
+    @media (max-width: 600px) {
+        .trip-header {
+            padding: 15px;
+        }
+
+        .trip-header .trip-title-box {
+            text-align: center;
+        }
+
+        .trip-gallery .main-image {
+            /* Set a fixed aspect ratio or height if needed for small screens */
+            height: 250px; 
+        }
+
+        .thumbnail-grid .thumbnail {
+            height: 80px;
+        }
+    }
+
+</style>
+
+    <div class="trip-details-page">
+        
+        <section class="trip-header">
+            <div class="trip-title-box">
+                <h1>{{ transfer.title }}</h1>
+                <p class="trip-slogan">{{ transfer.slogan }}</p>
+                <div class="trip-price-mobile">From ${{ transfer.price }}</div>
+            </div>
+            
+            <div class="trip-gallery">
+                <img src="{% static 'images/'|add:transfer.images.0 %}" alt="{{ transfer.title }}" class="main-image">
+                <div class="thumbnail-grid">
+                    <img src="{% static 'images/'|add:transfer.images.1 %}" alt="{{ transfer.title }} view 1" class="thumbnail">
+                    <img src="{% static 'images/'|add:transfer.images.2 %}" alt="{{ transfer.title }} view 2" class="thumbnail">
+                    <img src="{% static 'images/vehicle-fleet-placeholder.png' %}" alt="Transfer Vehicle Fleet" class="thumbnail">
+                </div>
+            </div>
+        </section>
+
+        <section class="itinerary-and-booking">
+            <div class="itinerary-content">
+                <h2>Service Highlights</h2>
+                <ul>
+                    {% for detail in transfer.details %}
+                        <li>✅ {{ detail }}</li>
+                    {% endfor %}
+                    <li>✅ Professional, licensed, and courteous driver provided.</li>
+                    <li>✅ All vehicles are modern, air-conditioned, and maintained to the highest standards.</li>
+                </ul>
+
+                <div class="full-width-section">
+                    <h2>Vehicle Options & Pricing</h2>
+                    
+                </div>
+
+            </div>
+            
+            <aside class="booking-module">
+                <h3>Request Booking: {{ transfer.title }}</h3>
+                <div class="current-price">
+                    <span class="price-label">Starting From</span>
+                    <span class="price-amount">${{ transfer.price }}</span>
+                    <span class="price-unit">one-way (for small car)</span>
+                </div>
+                
+                <p class="note">Click below to proceed to the secure booking request form.</p>
+                
+                <a href="{% url 'contact' %}?transfer_dest={{ transfer.route|urlencode }}&transfer_price={{ transfer.price }}" 
+                   class="cta-button booking-cta" style="display: block; text-align: center;">
+                    PROCEED TO BOOKING
+                </a>
+
+                <p class="disclaimer">The final price is based on vehicle type selected from the table above.</p>
+            </aside>
+        </section>
+
+    </div>
+
+{% endblock %}
