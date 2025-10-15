@@ -204,6 +204,9 @@ def diani_retreat_view(request):
     """Renders the detailed trip booking page for Diani Beach Retreat."""
     return render(request, 'diani-retreat-details.html') 
 
+def congo_sunset_details_view(request):
+    return render(request, 'congo-sunset-details.html')
+
 
 def contact_submit(request):
     """Handle contact form submissions from the site landing page.

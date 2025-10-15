@@ -1,12 +1,9 @@
 {% extends "base.html" %}
-
 {% load static %}
 
-{% block title %}Book  Diani Beach Retreat | Your Voyage Tours{% endblock %}
+{% block title %}Congo Beach Sunset View | Your Magical Tours{% endblock %}
 
 {% block content %}
-
-
 
 <style>
 
@@ -252,68 +249,63 @@
         
         <section class="trip-header">
             <div class="trip-title-box">
-                <h1> Relaxing Diani Beach Retreat</h1>
-                <p class="trip-slogan">Unwind on the pristine white sands of Diani, rated Africa's leading beach destination.</p>
-                <div class="trip-price-mobile">From $50 per person</div>
+                <h1>Congo Beach Sunset View Excursion</h1>
+                <p class="trip-slogan">Witness the spectacular African sunset where the Kongo River meets the Indian Ocean.</p>
+                <div class="trip-price-mobile">From $35 per person</div>
             </div>
-         
+            
             <div class="trip-gallery">
-                <img src="https://worldadventuretours.com/wp-content/uploads/2024/08/diani-sunbeds-1.jpg" alt="Sun loungers on Diani Beach" class="main-image">
+                <img src="https://cdn.getyourguide.com/img/tour/93167ffd397c00df3f8b2fce58eff0dd8dbae43ff6e1b3627bddf74d59e2a2d9.png/99.jpg" alt="Congo Beach Sunset View" class="main-image">
                 <div class="thumbnail-grid">
-                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/216519648.jpg?k=428c55acb0298cb497e828f8504131d5882612ae28f290872301a688ec0e7d1b&o=&hp=1" alt="Diani resort pool" class="thumbnail">
-                    <img src="https://www.nomad-beach-resort.com/wp-content/uploads/2019/06/kitesurf_2_1600_900-1030x579.jpg" alt="Watersports on Diani" class="thumbnail">
-                    <img src="https://www.kenyawildlifetours.com/wp-content/uploads/2023/06/Black-and-white-Colobus-Monkey1.webp" alt="Colobus Monkey Diani" class="thumbnail">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/6c/f4/b9/catching-sunset-at-congo.jpg" alt="Traditional Dhow at Congo" class="thumbnail">
+                    <img src="https://kachumbaritraveltour.com/assets/img/tours/adventure-boat-trip-kongo-river-diani.jpg" alt="Congo River Mouth" class="thumbnail">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/6c/f5/46/catching-sunset-at-congo.jpg" alt="Local life at Congo Beach" class="thumbnail">
                 </div>
             </div>
         </section>
 
         <section class="itinerary-and-booking">
             <div class="itinerary-content">
-                <h2>Detailed Routine</h2>
-                <p>Perfect for relaxation with optional activities like kitesurfing, snorkeling, or a visit to the Colobus Conservation.</p>
+                <h2>Excursion Highlights</h2>
+                <p>This short, scenic evening trip offers a unique blend of nature and local culture near Diani.</p>
                 
                 <div class="routine-step">
-                    <h3> Arrival & Sunset</h3>
+                    <h3>The Congo Experience (3 Hours)</h3>
                     <ul>
-                        <li>Morning: Airport transfer from Mombasa (Moi or Ukunda) to Diani hotel.</li>
-                        <li>Afternoon: Check-in and leisure time by the pool or beach.</li>
-                        <li>Evening: Sunset cocktail and dinner at the beachside restaurant.</li>
+                        <li>**Start Time:** Approx. 4:00 PM (varies seasonally). Private hotel pick-up from Diani.</li>
+                        <li>**Sunset Viewing:** Arrive at the viewpoint just before sunset to watch the spectacular colors over the river mouth.</li>
+                        <li>**Return:** Transfer back to your Diani accommodation after the sun sets.</li>
                     </ul>
                 </div>
-
                 
                 <div class="trip-inclusions">
                     <h3>What's Included?</h3>
                     <ul>
-                      
-                        <li>✅ Return airport transfers (Mombasa or Ukunda)</li>
-                        <li>✅ All government taxes</li>
+                        <li>✅ Private, round-trip transportation from your Diani hotel.</li>
+                        <li>✅ Boat Ride View.</li>
+                        <li>✅ Guaranteed best viewing spot for the sunset.</li>
+                        <li>❌ Food or Drinks (Available for purchase locally).</li>
                     </ul>
                 </div>
-            </div>
+                
+                </div>
             
             <aside class="booking-module">
-                <h3>Book Your Retreat Now</h3>
+                <h3>Book Your Sunset Trip Now</h3>
                 <div class="current-price">
                     <span class="price-label">Starting From</span>
-                    <span class="price-amount">$50</span>
-                    <span class="price-unit">per person (total)</span>
+                    <span class="price-amount">$35</span>
+                    <span class="price-unit">per person</span>
                 </div>
                 
-                <form class="booking-form-details">
-                    <label for="travelDate">Select Travel Date:</label>
-                    <input type="date" id="travelDate" name="travelDate" required>
-                    
-                    <label for="pax">Number of Travelers:</label>
-                    <input type="number" id="pax" name="pax" min="1" value="2" required>
-                    
-                    
-                    <label for="notes">Special Requests/Notes:</label>
-                    <textarea id="notes" name="notes" rows="3"></textarea>
-                    
-                    <button type="submit" class="cta-button booking-cta">REQUEST CUSTOM QUOTE</button>
-                    <p class="disclaimer">Price depends on hotel choice and room availability.</p>
-                </form>
+                <p class="note">Reserve your spot now to ensure best timing based on seasonal sunset hours.</p>
+
+                <a href="{% url 'contact' %}?transfer_dest=Congo%20Beach%20Sunset%20Excursion&transfer_price=25" 
+                   class="cta-button booking-cta" style="display: block; text-align: center;">
+                    PROCEED TO BOOKING
+                </a>
+
+                <p class="disclaimer">Price depends on group size; $35 is based on a minimum of 4 guests.</p>
             </aside>
         </section>
 
