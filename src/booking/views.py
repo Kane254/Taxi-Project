@@ -91,8 +91,8 @@ class ReviewCreateView(CreateView):
         return super().form_valid(form)
 
 
-def tsavo_details_view(request):
-    return render(request, 'tsavo-details.html')
+def borabora_details_view(request):
+    return render(request, 'borabora-details.html')
 
 def shimoni_caves_view(request):
     return render(request, 'shimoni-caves.html')
