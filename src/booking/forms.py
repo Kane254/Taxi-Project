@@ -1,7 +1,7 @@
 # booking/forms.py
 
 from django import forms
-from .models import Booking, Contact, Review
+from .models import Booking, Contact, Review, BookingConsultation
 
 class BookingForm(forms.ModelForm):
     class Meta:
@@ -25,4 +25,13 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
             'comment': forms.Textarea(attrs={'rows': 4}),
+        }
+
+
+class BookingConsultationForm(forms.ModelForm):
+    class Meta:
+        model = BookingConsultation
+        fields = ['full_name', 'email', 'phone_number', 'subject', 'message']
+        widgets = {
+            'message': forms.Textarea(attrs={'rows': 4}),
         }

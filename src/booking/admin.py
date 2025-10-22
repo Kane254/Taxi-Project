@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, Contact, Driver, Vehicle, Review
+from .models import Booking, Contact, Driver, Vehicle, Review, BookingConsultation
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
@@ -19,3 +19,9 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('id', 'full_name', 'rating', 'created_at')
     search_fields = ('full_name', 'comment')
     list_filter = ('rating', 'created_at')
+
+@admin.register(BookingConsultation)
+class BookingConsultationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'full_name', 'email', 'subject', 'submitted_at')
+    search_fields = ('full_name', 'email', 'subject')
+    list_filter = ('submitted_at',)

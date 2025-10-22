@@ -44,3 +44,15 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review - Rating: {self.rating}"
+
+
+class BookingConsultation(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Consultation from {self.full_name} - Subject: {self.subject}"
