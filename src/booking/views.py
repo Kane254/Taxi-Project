@@ -7,8 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseForbidden, Http404
 from django.contrib import messages
 
-from .models import Booking, Contact, Driver, Review
-from .forms import BookingForm, ContactForm, ReviewForm
+from .models import Booking, Contact, Driver, Review, BookingConsultation
+from .forms import BookingForm, ContactForm, ReviewForm, BookingConsultationForm
 
 # pages/views.py
 
@@ -143,6 +143,16 @@ class BookingCreateView(IsRiderMixin, CreateView):
         except Driver.DoesNotExist:
             form.instance.status = 'PENDING'
         return super().form_valid(form)
+    
+class BookingConsultationCreateView(CreateView):
+    model = BookingConsultation
+    form_class = BookingConsultationForm
+    template_name = 'contact.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        messages.success(self.request, "Your inquiry has been submitted successfully. Our team will contact you within 24 hours.")
+        return super().form_valid(form)
 
 class RiderBookingListView(IsRiderMixin, ListView):
     model = Booking
@@ -211,21 +221,21 @@ def congo_sunset_details_view(request):
 def contact_submit(request):
     """Handle contact form submissions from the site landing page.
 
-    Uses ContactForm to validate input and saves a Contact record. Feedback
-    is provided via Django messages and the user is redirected back to home.
+    Uses BookingConsultationForm to validate input and saves a BookingConsultation record. 
+    Feedback is provided via Django messages and the user is redirected back to home.
     """
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = BookingConsultationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Thanks — we've received your message and will be in touch shortly.")
+            messages.success(request, "Your inquiry has been received. We'll respond within 24 hours.")
             return redirect('home')
         else:
             # Attach form errors to messages so they can be shown after redirect
             for field, errs in form.errors.items():
                 for e in errs:
                     messages.error(request, f"{field}: {e}")
-            return redirect('home')
+            return redirect('contact')
     return redirect('home')
 def contact_view(request):
     # 1. Capture the URL parameters from the transfer links
